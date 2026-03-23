@@ -1,7 +1,8 @@
 <section style="
     height:100vh;
     display:flex;
-    justify-content:center;
+    flex-direction:column;
+    justify-content:flex-start;
     align-items:center;
     background:radial-gradient(circle at top, #1a1a1a, #000);
     text-align:center;
@@ -19,8 +20,8 @@
         background:#ff003c;
         border-radius:50%;
         filter:blur(120px);
-        top:10%;
-        left:20%;
+        top:5%;
+        left:15%;
         opacity:0.3;
     "></div>
 
@@ -37,32 +38,39 @@
         opacity:0.3;
     "></div>
 
+    <!-- TOP 1/3 CONTENT -->
     <div style="
-        position:relative;
-        z-index:2;
-        padding:40px;
-        border-radius:20px;
-        background:rgba(255,255,255,0.05);
-        backdrop-filter:blur(10px);
-        box-shadow:0 0 30px rgba(255,0,60,0.2);
+        margin-top:8vh;
+        width:100%;
+        display:flex;
+        justify-content:center;
     ">
-
-        <h1 style="
-            font-size:3rem;
-            color:#ff003c;
-            letter-spacing:3px;
-            margin-bottom:10px;
-            text-shadow:0 0 15px #ff003c;
+        <div style="
+            padding:30px 50px;
+            border-radius:20px;
+            background:rgba(255,255,255,0.05);
+            backdrop-filter:blur(10px);
+            box-shadow:0 0 30px rgba(255,0,60,0.2);
         ">
-            MONEYHEIST AI BOT
-        </h1>
 
-        <p style="
-            font-size:1.2rem;
-            color:#ddd;
-        ">
-            Created By Mzazi Tech Inc.
-        </p>
+            <h1 style="
+                font-size:3rem;
+                color:#ff003c;
+                letter-spacing:3px;
+                margin-bottom:10px;
+                text-shadow:0 0 15px #ff003c;
+            ">
+                MONEYHEIST AI BOT
+            </h1>
 
+            <p style="
+                font-size:1.2rem;
+                color:#ddd;
+            ">
+                Created By Mzazi Tech Inc.
+            </p>
+
+        </div>
     </div>
+
 </section>
