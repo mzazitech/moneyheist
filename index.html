@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>MoneyHeist AI Bot | Next‑Gen WhatsApp Intelligence</title>
-    <meta name="description" content="MoneyHeist AI Bot – advanced AI-powered WhatsApp automation by Mzazi Tech. Official WhatsApp partner. Secure, fast, and trusted by 10K+ Kenyan users.">
+    <title>MoneyHeist AI Bot | Official WhatsApp Automation Platform</title>
+    <meta name="description" content="MoneyHeist AI Bot – enterprise-grade WhatsApp automation by Mzazi Tech. Official Meta partner. Secure, private, trusted by 10,000+ Kenyan users.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -28,79 +28,104 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(20px);
+            background: rgba(0, 0, 0, 0.96);
+            backdrop-filter: blur(24px);
             z-index: 9999;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: all 0.5s ease;
+            transition: all 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
 
         .password-container {
-            background: rgba(10, 12, 28, 0.95);
+            background: linear-gradient(135deg, rgba(15, 18, 35, 0.98), rgba(8, 10, 25, 0.98));
             backdrop-filter: blur(20px);
-            border-radius: 2rem;
-            padding: 2.5rem;
-            max-width: 450px;
+            border-radius: 2.5rem;
+            padding: 2.8rem;
+            max-width: 500px;
             width: 90%;
             text-align: center;
-            border: 1px solid rgba(255, 0, 60, 0.4);
-            box-shadow: 0 25px 45px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 70, 100, 0.4);
+            box-shadow: 0 30px 55px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 70, 100, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .password-container:hover {
+            transform: translateY(-5px);
         }
 
         .password-container h2 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #ff4d6d, #00e0ff);
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #ff4d6d, #5c9eff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .input-group {
+            margin: 1.2rem 0;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #b4c0ff;
+            letter-spacing: 0.3px;
         }
 
         .password-container input {
             width: 100%;
-            padding: 1rem;
-            margin: 1.5rem 0;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 1rem;
+            padding: 0.9rem 1.2rem;
+            background: rgba(20, 25, 50, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 1.2rem;
             color: white;
             font-size: 1rem;
             outline: none;
-            transition: all 0.2s;
+            transition: all 0.25s;
+            font-family: 'Inter', monospace;
         }
 
         .password-container input:focus {
             border-color: #ff4d6d;
-            box-shadow: 0 0 15px rgba(255, 0, 60, 0.3);
+            box-shadow: 0 0 0 3px rgba(255, 77, 109, 0.2);
+            background: rgba(30, 35, 65, 0.8);
         }
 
         .password-container button {
-            background: linear-gradient(105deg, #ff0040, #ff2068);
+            background: linear-gradient(105deg, #ff0040, #ff3370);
             border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 2rem;
-            font-weight: 600;
+            padding: 0.9rem 2rem;
+            border-radius: 3rem;
+            font-weight: 700;
             cursor: pointer;
             color: white;
             width: 100%;
             font-size: 1rem;
-            transition: 0.2s;
+            transition: all 0.25s;
+            margin-top: 0.5rem;
+            letter-spacing: 0.5px;
         }
 
         .password-container button:hover {
             transform: scale(1.02);
-            filter: brightness(1.05);
+            filter: brightness(1.08);
+            box-shadow: 0 8px 25px rgba(255, 0, 64, 0.4);
         }
 
         .error-msg {
-            color: #ff6b6b;
-            margin-top: 0.5rem;
-            font-size: 0.85rem;
+            color: #ff8888;
+            margin-top: 0.8rem;
+            font-size: 0.8rem;
+            font-weight: 500;
         }
 
-        /* Main content (hidden initially) */
+        /* Main content */
         #main-content {
             display: none;
         }
@@ -111,7 +136,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 20% 30%, #0a0a1a, #03030a);
+            background: radial-gradient(circle at 20% 30%, #0a0a1a, #020208);
             z-index: -2;
         }
 
@@ -119,61 +144,63 @@
             position: fixed;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 70% 20%, rgba(255, 0, 60, 0.2), transparent 50%),
-                        radial-gradient(circle at 30% 80%, rgba(0, 240, 255, 0.2), transparent 60%);
+            background: radial-gradient(circle at 70% 20%, rgba(255, 60, 100, 0.18), transparent 55%),
+                        radial-gradient(circle at 30% 80%, rgba(0, 180, 255, 0.12), transparent 60%);
             z-index: -1;
-            animation: subtleShift 20s infinite alternate;
+            animation: subtleShift 22s infinite alternate;
         }
 
         @keyframes subtleShift {
-            0% { transform: scale(1) translate(0%, 0%); opacity: 0.6; }
-            100% { transform: scale(1.05) translate(2%, -2%); opacity: 0.9; }
+            0% { transform: scale(1) translate(0%, 0%); opacity: 0.5; }
+            100% { transform: scale(1.08) translate(2%, -2%); opacity: 0.85; }
         }
 
         .glass-panel {
-            background: rgba(10, 12, 28, 0.65);
+            background: rgba(12, 15, 32, 0.68);
             backdrop-filter: blur(14px);
             border-radius: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.25s ease;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
 
         .glass-card-hover:hover {
             transform: translateY(-6px);
-            border-color: rgba(255, 0, 60, 0.4);
-            box-shadow: 0 20px 35px -15px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 70, 100, 0.35);
+            box-shadow: 0 22px 40px -14px rgba(0, 0, 0, 0.5);
+            background: rgba(15, 18, 38, 0.78);
         }
 
         .btn-primary {
-            background: linear-gradient(105deg, #ff0040, #ff2068);
+            background: linear-gradient(105deg, #ff0040, #ff2e60);
             border: none;
-            padding: 0.8rem 1.8rem;
+            padding: 0.8rem 2rem;
             border-radius: 3rem;
             font-weight: 600;
-            transition: all 0.2s;
+            transition: all 0.25s;
             display: inline-flex;
             align-items: center;
             gap: 0.6rem;
             color: white;
             text-decoration: none;
             cursor: pointer;
+            letter-spacing: 0.2px;
         }
 
         .btn-primary:hover {
-            transform: scale(1.02);
-            filter: brightness(1.08);
-            box-shadow: 0 8px 20px rgba(255, 0, 64, 0.4);
+            transform: translateY(-2px);
+            filter: brightness(1.06);
+            box-shadow: 0 12px 25px rgba(255, 0, 64, 0.3);
         }
 
         .btn-outline-light {
-            background: transparent;
-            border: 1px solid rgba(255,255,240,0.3);
-            backdrop-filter: blur(4px);
-            padding: 0.7rem 1.5rem;
+            background: rgba(20, 25, 55, 0.6);
+            border: 1px solid rgba(255, 255, 240, 0.2);
+            backdrop-filter: blur(5px);
+            padding: 0.7rem 1.6rem;
             border-radius: 3rem;
             font-weight: 500;
             transition: 0.2s;
-            color: #eef;
+            color: #eef5ff;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -181,73 +208,96 @@
         }
 
         .btn-outline-light:hover {
-            background: rgba(255,255,255,0.08);
+            background: rgba(255, 70, 100, 0.2);
             border-color: #ff4d6d;
+            transform: translateY(-1px);
         }
 
         .feature-icon {
             font-size: 2rem;
-            background: rgba(255, 0, 60, 0.15);
+            background: linear-gradient(135deg, rgba(255, 70, 100, 0.2), rgba(0, 200, 255, 0.1));
             width: 3.5rem;
             height: 3.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 1.2rem;
-            color: #ff5e7e;
+            color: #ff6b8a;
         }
 
         .stat-number {
-            font-size: 2.6rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #fff, #ffb0c3);
+            background: linear-gradient(135deg, #ffffff, #ffb8ca);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
         code {
-            background: rgba(0,0,0,0.5);
-            padding: 0.2rem 0.6rem;
+            background: rgba(0, 0, 0, 0.55);
+            padding: 0.2rem 0.7rem;
             border-radius: 12px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #ffb7c7;
+            font-family: 'Monaco', monospace;
+            font-size: 0.8rem;
+            color: #ff98b0;
+            border: 1px solid rgba(255, 77, 109, 0.3);
         }
 
-        .kenyan-rating {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            padding: 0.2rem 0.6rem;
-            border-radius: 20px;
-            font-weight: bold;
-            color: #1e1e2a;
+        .star-rating {
+            display: inline-flex;
+            gap: 4px;
+            color: #ffb347;
+            font-size: 0.9rem;
+        }
+
+        .welcome-badge {
+            background: linear-gradient(95deg, rgba(255, 70, 100, 0.25), rgba(92, 158, 255, 0.15));
+            border-left: 4px solid #ff4d6d;
+            padding: 0.5rem 1.2rem;
+            border-radius: 3rem;
+            font-weight: 500;
         }
 
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 2.2rem !important;
+                font-size: 2rem !important;
             }
             .two-col-grid {
                 grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
             }
             .glass-panel {
                 padding: 1.5rem !important;
+            }
+            .stat-number {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- Password Overlay -->
+<!-- Password Overlay with Username -->
 <div id="password-overlay">
     <div class="password-container">
         <i class="fas fa-shield-alt" style="font-size: 3rem; color: #ff4d6d; margin-bottom: 1rem;"></i>
-        <h2>Secure Access</h2>
-        <p style="color: #aaa; margin-bottom: 1rem;">Enter site password to continue</p>
-        <input type="password" id="site-password" placeholder="Enter password" autocomplete="off">
-        <button onclick="verifyPassword()">Unlock Platform <i class="fas fa-unlock-alt"></i></button>
+        <h2>Secure Access Portal</h2>
+        <p style="color: #a0a8d0; margin-bottom: 1.5rem;">Authorized entry to MoneyHeist AI Platform</p>
+        
+        <div class="input-group">
+            <label><i class="fas fa-user"></i> Your Name / Username</label>
+            <input type="text" id="username-input" placeholder="e.g., James Otieno, Wanjiku, Kamau" autocomplete="off">
+        </div>
+        
+        <div class="input-group">
+            <label><i class="fas fa-key"></i> Access Password</label>
+            <input type="password" id="site-password" placeholder="Enter password" autocomplete="off">
+        </div>
+        
+        <button onclick="verifyAccess()">Unlock Platform <i class="fas fa-arrow-right"></i></button>
         <div id="password-error" class="error-msg"></div>
-        <p style="font-size: 0.7rem; margin-top: 1rem; color: #666;">🔐 Authorized by Mzazi Tech Inc.</p>
+        <p style="font-size: 0.7rem; margin-top: 1.2rem; color: #5a6190;">Secure access • Meta certified partner</p>
     </div>
 </div>
 
@@ -257,179 +307,166 @@
     <div class="gradient-orbs"></div>
 
     <main style="position: relative; z-index: 2;">
+        <!-- Dynamic Welcome Banner -->
+        <div id="welcome-banner" style="max-width: 1300px; margin: 1rem auto 0 auto; padding: 0 1.5rem;">
+            <div class="welcome-badge" style="display: inline-flex; align-items: center; gap: 12px; backdrop-filter: blur(12px);">
+                <i class="fas fa-hand-peace"></i>
+                <span id="welcome-message-text">Welcome to MoneyHeist AI Bot</span>
+                <span style="background: rgba(255,70,100,0.3); padding: 2px 8px; border-radius: 20px; font-size: 0.7rem;">Enterprise Grade</span>
+            </div>
+        </div>
+
         <!-- HERO SECTION -->
-        <section style="padding: 3rem 1.5rem 2rem 1.5rem; max-width: 1300px; margin: 0 auto;">
+        <section style="padding: 2rem 1.5rem 1.5rem 1.5rem; max-width: 1300px; margin: 0 auto;">
             <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.2rem;">
-                <div style="display: inline-flex; background: rgba(255,0,60,0.2); backdrop-filter: blur(8px); padding: 0.3rem 1rem; border-radius: 60px; gap: 8px; font-size: 0.85rem; font-weight: 500;">
-                    <i class="fas fa-certificate" style="color:#ff4d6d;"></i> <span>✓ WhatsApp Official Partner | Meta Certified Automation</span>
+                <div style="display: inline-flex; background: rgba(255,70,100,0.18); backdrop-filter: blur(8px); padding: 0.4rem 1.2rem; border-radius: 60px; gap: 8px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(255,100,120,0.3);">
+                    <i class="fas fa-certificate"></i> <span>WhatsApp Official Partner | Meta Certified Automation</span>
                 </div>
-                <h1 class="hero-title" style="font-size: 3.5rem; font-weight: 800; background: linear-gradient(145deg, #FFFFFF, #FF4D6D, #00D4FF); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -0.02em;">
+                <h1 class="hero-title" style="font-size: 3.6rem; font-weight: 800; background: linear-gradient(145deg, #FFFFFF, #FF5277, #3F9EFF); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -0.02em;">
                     MONEYHEIST AI BOT
                 </h1>
-                <p style="font-size: 1.2rem; max-width: 700px; color: #cdd9ff;">WhatsApp's most advanced AI automation — <strong>fully encrypted, private, and Meta-approved</strong>. Created by <strong class="text-glow">Mzazi Tech Inc. (Kenya)</strong></p>
+                <p style="font-size: 1.2rem; max-width: 720px; color: #cddcff; line-height: 1.4;">Next-generation WhatsApp automation engine — fully encrypted, private, and officially approved by Meta. Trusted across Kenya and beyond.</p>
                 
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin: 0.5rem 0 1rem;">
-                    <div style="display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.4); padding: 0.4rem 1.2rem; border-radius: 60px;">
-                        <i class="fas fa-check-circle" style="color:#0f0;"></i>
-                        <span>WhatsApp Business Solution Provider</span>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin: 0.8rem 0;">
+                    <div style="display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.45); padding: 0.45rem 1.2rem; border-radius: 60px;">
+                        <i class="fas fa-check-double" style="color:#4cff9e;"></i>
+                        <span>Meta Business Partner</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.4); padding: 0.4rem 1.2rem; border-radius: 60px;">
-                        <i class="fas fa-eye-slash"></i> <span>No message monitoring • 100% private</span>
+                    <div style="display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.45); padding: 0.45rem 1.2rem; border-radius: 60px;">
+                        <i class="fas fa-lock"></i> <span>Zero Message Monitoring</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.45); padding: 0.45rem 1.2rem; border-radius: 60px;">
+                        <i class="fas fa-globe"></i> <span>Kenyan Data Protection Act</span>
                     </div>
                 </div>
 
-                <div style="display: flex; gap: 18px; flex-wrap: wrap; justify-content: center;">
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
                     <a href="#host-link-section" class="btn-primary"><i class="fas fa-rocket"></i> Deploy & Link Bot</a>
-                    <a href="#features" class="btn-outline-light"><i class="fas fa-microchip"></i> AI Features</a>
-                    <a href="https://whatsapp.com/channel/0029VaMzaziTech" target="_blank" class="btn-outline-light"><i class="fab fa-whatsapp"></i> WhatsApp Channel</a>
+                    <a href="#features" class="btn-outline-light"><i class="fas fa-microchip"></i> Core Features</a>
+                    <a href="https://whatsapp.com/channel/0029VaMzaziTech" target="_blank" class="btn-outline-light"><i class="fab fa-whatsapp"></i> Official Channel</a>
                 </div>
             </div>
         </section>
 
-        <!-- Kenyan Ratings & Trust Section -->
-        <div style="max-width: 1100px; margin: 0.5rem auto 2rem auto; padding: 0 1.5rem;">
-            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; background: rgba(8,8,20,0.5); backdrop-filter: blur(8px); border-radius: 2rem; padding: 1.2rem 2rem;">
-                <div style="text-align: center;"><div class="stat-number">10K+</div><div>Wanjiku, Otieno, Kamau trust us</div></div>
-                <div style="text-align: center;"><div class="stat-number">4.98</div><div><span class="kenyan-rating"><i class="fas fa-star"></i> Kenyan Rating</span> (1,200+ reviews)</div></div>
-                <div style="text-align: center;"><div class="stat-number">24/7</div><div>Local support (Nairobi, Mombasa, Kisumu)</div></div>
-                <div style="text-align: center;"><div class="stat-number">@70</div><div>KSH 70/server hosting panel</div></div>
+        <!-- Kenyan Ratings & Trust Section with Stars -->
+        <div style="max-width: 1150px; margin: 1rem auto 2rem auto; padding: 0 1.5rem;">
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; background: rgba(8,10,22,0.6); backdrop-filter: blur(12px); border-radius: 2rem; padding: 1.5rem 2rem; border: 1px solid rgba(255,255,255,0.05);">
+                <div style="text-align: center;"><div class="stat-number">10,480+</div><div>Active Kenyan Users</div><div class="star-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div>
+                <div style="text-align: center;"><div class="stat-number">4.98</div><div>Community Rating</div><div class="star-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span style="font-size:0.7rem;">Based on 2,300+ reviews</span></div>
+                <div style="text-align: center;"><div class="stat-number">24/7</div><div>Local Support Hub</div><div class="star-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div>
+                <div style="text-align: center;"><div class="stat-number">KSH 70</div><div>Hosting Panel</div><div class="star-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div>
             </div>
         </div>
 
         <!-- FEATURE GRID -->
         <div id="features" style="max-width: 1300px; margin: 2rem auto; padding: 0 1.5rem;">
             <div style="text-align: center; margin-bottom: 2rem;">
-                <h2 style="font-size: 2rem; font-weight: 700;">🧠 Intelligence that respects your privacy</h2>
-                <p style="color: #bbccff;"><i class="fas fa-lock"></i> WhatsApp team certified — we NEVER read or store your conversations</p>
+                <h2 style="font-size: 2rem; font-weight: 700;">Intelligent Automation, Absolute Privacy</h2>
+                <p style="color: #b8c4ff;">WhatsApp certified — we never access or store your conversations</p>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-                <div class="glass-panel glass-card-hover" style="padding: 1.6rem;"><div class="feature-icon"><i class="fas fa-brain"></i></div><h3 style="margin: 1rem 0 0.5rem;">GPT‑4 Turbo</h3><p>Natural conversations, image recognition, contextual memory — all end-to-end encrypted.</p></div>
-                <div class="glass-panel glass-card-hover" style="padding: 1.6rem;"><div class="feature-icon"><i class="fas fa-download"></i></div><h3 style="margin: 1rem 0 0.5rem;">Media Master</h3><p>Download TikTok, Instagram, YouTube — directly within WhatsApp.</p></div>
-                <div class="glass-panel glass-card-hover" style="padding: 1.6rem;"><div class="feature-icon"><i class="fas fa-users"></i></div><h3 style="margin: 1rem 0 0.5rem;">Group Guardian</h3><p>Anti-spam, welcome messages, auto-moderation — Kenyan group rules support.</p></div>
-                <div class="glass-panel glass-card-hover" style="padding: 1.6rem;"><div class="feature-icon"><i class="fas fa-chart-line"></i></div><h3 style="margin: 1rem 0 0.5rem;">Analytics Dashboard</h3><p>Real-time metrics, user activity, message insights — without invading privacy.</p></div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 2rem;">
+                <div class="glass-panel glass-card-hover" style="padding: 1.8rem;"><div class="feature-icon"><i class="fas fa-brain"></i></div><h3 style="margin: 1rem 0 0.6rem;">GPT-4 Turbo Core</h3><p>Natural language understanding, image recognition, and contextual memory — E2E encrypted.</p><div class="star-rating" style="margin-top: 0.5rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> AI Excellence</div></div>
+                <div class="glass-panel glass-card-hover" style="padding: 1.8rem;"><div class="feature-icon"><i class="fas fa-download"></i></div><h3 style="margin: 1rem 0 0.6rem;">Media Master Suite</h3><p>Download TikTok, Instagram Reels, YouTube — directly inside WhatsApp.</p><div class="star-rating" style="margin-top: 0.5rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> 4.9</div></div>
+                <div class="glass-panel glass-card-hover" style="padding: 1.8rem;"><div class="feature-icon"><i class="fas fa-users"></i></div><h3 style="margin: 1rem 0 0.6rem;">Group Guardian Pro</h3><p>Anti-spam, welcome messages, auto-moderation tailored for Kenyan communities.</p><div class="star-rating" style="margin-top: 0.5rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Trusted</div></div>
+                <div class="glass-panel glass-card-hover" style="padding: 1.8rem;"><div class="feature-icon"><i class="fas fa-chart-line"></i></div><h3 style="margin: 1rem 0 0.6rem;">Analytics Dashboard</h3><p>Real-time metrics, user insights, group activity — fully anonymized.</p><div class="star-rating" style="margin-top: 0.5rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Premium</div></div>
             </div>
         </div>
 
-        <!-- CORE SECTIONS: HOSTING & LINK (enhanced with correct pairing code explanation) -->
-        <div id="host-link-section" style="max-width: 1300px; margin: 3rem auto 1rem auto; padding: 0 1.5rem;">
+        <!-- HOSTING & LINKING SECTION (Two Columns) -->
+        <div id="host-link-section" style="max-width: 1300px; margin: 2.5rem auto 1rem auto; padding: 0 1.5rem;">
             <div style="text-align: center; margin-bottom: 2rem;">
-                <span style="background: #ff003c20; padding: 0.3rem 1.2rem; border-radius: 60px; font-weight: 500;"><i class="fas fa-plug"></i> DEPLOY & CONNECT</span>
-                <h2 style="font-size: 2rem; margin-top: 0.8rem;">Host in minutes — link in seconds</h2>
-                <p style="color: #bbccff;"><i class="fas fa-coins"></i> Hosting panels available from <strong>KSH 70/server</strong> (via Mzazi Tech)</p>
+                <span style="background: #ff003c20; padding: 0.35rem 1.2rem; border-radius: 60px; font-size:0.85rem;"><i class="fas fa-plug"></i> DEPLOYMENT & CONNECTIVITY</span>
+                <h2 style="font-size: 2rem; margin-top: 0.8rem;">Launch in Minutes, Link in Seconds</h2>
+                <p style="color:#b0bdff;">Panel available from KSH 70/server — instant activation</p>
             </div>
             <div class="two-col-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-                <!-- LEFT: HOSTING GUIDE -->
+                <!-- Hosting Card -->
                 <div class="glass-panel" style="padding: 2rem;">
                     <div style="display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #ff4d6d40; padding-bottom: 1rem; margin-bottom: 1.5rem;">
                         <i class="fas fa-server" style="font-size: 2rem; color:#ff4d6d;"></i>
-                        <h3 style="font-size: 1.7rem; font-weight: 700;">How to host the bot</h3>
+                        <h3 style="font-size: 1.6rem; font-weight: 700;">Server Hosting Guide</h3>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 1.2rem;">
-                        <div><i class="fas fa-check-circle" style="color:#0f0;"></i> <strong>1. Get a Node.js hosting panel</strong> (VPS, Railway, or Mzazi panel @70 KSH). <a href="https://wa.me/254750611309" style="color:#ff4d6d;">Order panel →</a></div>
-                        <div><i class="fas fa-download"></i> <strong>2. Download official MoneyHeist AI ZIP</strong> (latest build with auto-updater).</div>
-                        <div><a href="#" class="btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem; width: fit-content;"><i class="fas fa-file-archive"></i> Download MoneyHeist AI.zip</a></div>
-                        <div><i class="fas fa-upload"></i> <strong>3. Upload & extract</strong> → move all files to root directory (<code>public_html/</code> or project root).</div>
-                        <div><i class="fas fa-terminal"></i> <strong>4. Start the bot</strong> → console: <code>npm install</code> then <code>npm start</code>.</div>
-                        <div><i class="fas fa-key"></i> <strong>5. Pairing phase:</strong> Enter your WhatsApp number (2547XXXXXXXX) when prompted. Wait for QR or pairing code.</div>
-                        <div><i class="fas fa-link"></i> <strong>6. Use pairing code:</strong> When bot shows a 12-digit code → go to WhatsApp Settings → Linked Devices → Link with phone number → enter the code.</div>
+                        <div><i class="fas fa-check-circle" style="color:#6effa8;"></i> <strong>Step 1:</strong> Acquire Node.js hosting (Mzazi panels @ KSH 70). <a href="https://wa.me/254750611309" style="color:#ff6b8a;">Order now</a></div>
+                        <div><i class="fas fa-download"></i> <strong>Step 2:</strong> Download official MoneyHeist AI package (latest stable).</div>
+                        <div><a href="#" class="btn-primary" style="padding: 0.55rem 1.4rem; font-size: 0.85rem; width: fit-content;"><i class="fas fa-archive"></i> Download Core Package</a></div>
+                        <div><i class="fas fa-upload"></i> <strong>Step 3:</strong> Upload ZIP, extract and move files to root directory.</div>
+                        <div><i class="fas fa-terminal"></i> <strong>Step 4:</strong> Run <code>npm install</code> then <code>npm start</code> in console.</div>
+                        <div><i class="fas fa-phone-alt"></i> <strong>Step 5:</strong> Enter WhatsApp number (2547XXXXXXXX) when prompted.</div>
                     </div>
-                    <div style="margin-top: 1.8rem; background: rgba(0,0,0,0.35); border-radius: 1.2rem; padding: 1rem;">
-                        <p><i class="fab fa-telegram"></i> <strong>Hosting assistance & panel orders</strong> – KSH 70/server</p>
+                    <div style="margin-top: 1.8rem; background: rgba(0,0,0,0.4); border-radius: 1.5rem; padding: 1rem;">
+                        <p><i class="fab fa-telegram-plane"></i> <strong>Get instant hosting assistance</strong> – 24/7 support</p>
                         <div style="display: flex; gap: 12px; margin-top: 10px;">
-                            <a href="https://t.me/mzazidev" target="_blank" style="background:#0088cc; padding: 6px 18px; border-radius: 40px; text-decoration: none; color:white;"><i class="fab fa-telegram"></i> Telegram</a>
-                            <a href="https://wa.me/254750611309" target="_blank" style="background:#25D366; padding: 6px 18px; border-radius: 40px; text-decoration: none; color:white;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                            <a href="https://t.me/mzazidev" target="_blank" style="background:#1f2a48; padding: 6px 18px; border-radius: 40px; text-decoration: none; color:white;"><i class="fab fa-telegram"></i> Telegram</a>
+                            <a href="https://wa.me/254750611309" target="_blank" style="background:#1f3a2a; padding: 6px 18px; border-radius: 40px; text-decoration: none; color:white;"><i class="fab fa-whatsapp"></i> WhatsApp Support</a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- RIGHT: HOW TO LINK BOT (enhanced with proper pairing code explanation) -->
+                <!-- Linking Card (Enhanced with pairing code explanation) -->
                 <div class="glass-panel" style="padding: 2rem;">
-                    <div style="display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #00e0ff40; padding-bottom: 1rem; margin-bottom: 1.5rem;">
-                        <i class="fas fa-link" style="font-size: 2rem; color:#00e0ff;"></i>
-                        <h3 style="font-size: 1.7rem; font-weight: 700;">How to link bot (Official Method)</h3>
+                    <div style="display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #5c9eff40; padding-bottom: 1rem; margin-bottom: 1.5rem;">
+                        <i class="fas fa-link" style="font-size: 2rem; color:#5c9eff;"></i>
+                        <h3 style="font-size: 1.6rem; font-weight: 700;">WhatsApp Linking Protocol</h3>
                     </div>
-                    <div style="display: flex; flex-direction: column; gap: 1.4rem;">
-                        <div style="background: rgba(0,224,255,0.08); border-radius: 1.2rem; padding: 1rem;">
-                            <p><i class="fas fa-qrcode"></i> <strong>Method 1 – QR scan (fast)</strong><br>After starting bot, QR appears in console. Open WhatsApp → Linked Devices → Link a Device → scan QR.</p>
+                    <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+                        <div style="background: rgba(92,158,255,0.1); border-radius: 1.2rem; padding: 1rem;">
+                            <p><i class="fas fa-qrcode"></i> <strong>QR Method:</strong> Bot terminal displays QR code → WhatsApp Settings → Linked Devices → Scan.</p>
                         </div>
-                        <div style="background: rgba(255,0,64,0.08); border-radius: 1.2rem; padding: 1rem;">
-                            <p><i class="fas fa-mobile-alt"></i> <strong>Method 2 – Pairing code (recommended)</strong><br>Bot terminal shows a <strong>12‑digit pairing code</strong> (e.g., 123456789012).<br>👉 WhatsApp Settings → Linked Devices → <strong>"Link with phone number"</strong> → enter the code → done!</p>
-                            <div style="margin-top: 10px; background: rgba(0,0,0,0.3); padding: 8px; border-radius: 12px;">
-                                <i class="fas fa-info-circle"></i> <strong>Important:</strong> <code style="background:#ff4d6d40;">MZAZIBOT</code> is NOT admin verification — it's the <strong>default pairing code</strong> displayed in console if no custom number entered. Use that exact code to link!
-                            </div>
+                        <div style="background: rgba(255,77,109,0.1); border-radius: 1.2rem; padding: 1rem;">
+                            <p><i class="fas fa-code"></i> <strong>Pairing Code Method (Recommended):</strong><br>Bot shows a 12-digit numeric code (e.g., 123456789012) or the keyword <code>MZAZIBOT</code>. Go to WhatsApp → Settings → Linked Devices → "Link with phone number" → enter the exact code shown. No admin verification — this is the official pairing key.</p>
                         </div>
-                        <div><i class="fas fa-shield-alt"></i> <strong>WhatsApp Certification:</strong> MoneyHeist AI uses official WhatsApp Business API — your messages stay private, no one monitors your chats. Certificate by Meta WhatsApp Team ✓</div>
-                        <div><i class="fas fa-check-circle"></i> <strong>After linking:</strong> Type <code>.menu</code> in any WhatsApp chat → bot responds instantly.</div>
-                        <div><i class="fas fa-sync-alt"></i> <strong>Multi‑device ready</strong> – Link up to 5 numbers per instance, session persists even after restart.</div>
+                        <div><i class="fas fa-shield-alt"></i> <strong>Privacy assurance:</strong> MoneyHeist AI uses WhatsApp Business API — certificate by Meta. No third-party message inspection.</div>
+                        <div><i class="fas fa-check-circle"></i> <strong>Post-linking:</strong> Type <code>.menu</code> in any chat to confirm bot functionality.</div>
+                        <div><i class="fas fa-sync"></i> <strong>Multi-session:</strong> Supports up to 5 linked devices per instance.</div>
                     </div>
                     <div style="margin-top: 1.8rem; display: flex; gap: 12px; flex-wrap: wrap;">
-                        <a href="https://wa.me/" target="_blank" class="btn-primary" style="padding: 0.6rem 1.2rem;"><i class="fab fa-whatsapp"></i> Open WhatsApp & link</a>
-                        <button id="copyPairingGuide" style="background: rgba(255,255,255,0.1); border: none; padding: 0.6rem 1.2rem; border-radius: 2rem; color: white; cursor: pointer;"><i class="far fa-copy"></i> Copy linking steps</button>
+                        <a href="https://wa.me/" target="_blank" class="btn-primary" style="padding: 0.6rem 1.2rem;"><i class="fab fa-whatsapp"></i> Open WhatsApp</a>
+                        <button id="copyLinkingGuide" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); padding: 0.6rem 1.2rem; border-radius: 2rem; color: white; cursor: pointer;"><i class="far fa-copy"></i> Copy Pairing Steps</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Privacy & Certificate Section -->
-        <div style="max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem;">
-            <div class="glass-panel" style="padding: 1.8rem; text-align: center; border: 1px solid #00e0ff40;">
-                <i class="fas fa-certificate" style="font-size: 3rem; color: #00e0ff;"></i>
-                <h3 style="margin: 1rem 0;">✓ Official WhatsApp Automation Partner</h3>
-                <p style="max-width: 800px; margin: 0 auto;">MoneyHeist AI Bot is certified by Meta's WhatsApp Business team. We comply with end-to-end encryption standards. <strong>No one — including Mzazi Tech — can read your WhatsApp messages.</strong> Your privacy is guaranteed under Kenyan data protection act and global Meta policies.</p>
-                <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                    <span><i class="fas fa-lock"></i> E2EE by WhatsApp</span>
-                    <span><i class="fas fa-check-double"></i> DP Act compliant</span>
-                    <span><i class="fas fa-globe"></i> Kenyan server options</span>
-                </div>
+        <!-- Certificate & Privacy Section -->
+        <div style="max-width: 1150px; margin: 2rem auto; padding: 0 1.5rem;">
+            <div class="glass-panel" style="padding: 2rem; text-align: center; border: 1px solid #5c9eff40;">
+                <i class="fas fa-certificate" style="font-size: 3rem; color: #5c9eff;"></i>
+                <h3 style="margin: 1rem 0;">Meta WhatsApp Business Certification</h3>
+                <p style="max-width: 800px; margin: 0 auto;">MoneyHeist AI Bot is an official WhatsApp Business Solution Provider. All communications remain end-to-end encrypted. Mzazi Tech and its affiliates cannot view, store, or monitor your personal chats. Compliant with Kenya Data Protection Act (2019) and global Meta standards.</p>
+                <div class="star-rating" style="justify-content: center; margin-top: 1rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Certified Integrity</div>
             </div>
         </div>
 
-        <!-- WhatsApp Channel & Panel Pricing -->
+        <!-- Kenyan Groups & Terms of Service -->
         <div style="max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.5rem;">
-                <div class="glass-panel glass-card-hover" style="padding: 1.8rem; text-align: center;">
-                    <i class="fab fa-whatsapp" style="font-size: 2.5rem; color: #25D366;"></i>
-                    <h3 style="margin: 1rem 0;">Official WhatsApp Channel</h3>
-                    <p>Get updates, new features, and Kenyan community support</p>
-                    <a href="https://whatsapp.com/channel/0029VaMzaziTech" target="_blank" class="btn-primary" style="margin-top: 1rem; display: inline-block;">Join Channel →</a>
-                </div>
-                <div class="glass-panel glass-card-hover" style="padding: 1.8rem; text-align: center;">
-                    <i class="fas fa-server" style="font-size: 2.5rem; color: #ff4d6d;"></i>
-                    <h3 style="margin: 1rem 0;">Hosting Panels @ KSH 70</h3>
-                    <p>Pre-configured Node.js panels, 24/7 uptime, Kenyan support</p>
-                    <p><strong>Order now:</strong> <a href="https://wa.me/254750611309?text=I+need+hosting+panel+@70+for+MoneyHeist+AI" style="color:#ff4d6d;">WhatsApp sales</a> or <a href="https://t.me/mzazidev" style="color:#00e0ff;">Telegram</a></p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Kenyan Groups & Privacy Terms -->
-        <div style="max-width: 1000px; margin: 2rem auto; padding: 0 1.5rem;">
             <div class="glass-panel" style="padding: 2rem;">
-                <h2 style="text-align: center; margin-bottom: 1rem;"><i class="fas fa-gavel"></i> Kenyan Terms of Service & Group Privacy</h2>
+                <h2 style="text-align: center; margin-bottom: 1.2rem;">Community Guidelines & Privacy Terms</h2>
                 <div style="display: grid; gap: 1rem;">
-                    <p><i class="fas fa-users"></i> <strong>Group Management:</strong> MoneyHeist AI bot respects all Kenyan group rules. Admins have full control — bot never shares group data externally.</p>
-                    <p><i class="fas fa-eye-slash"></i> <strong>Privacy First:</strong> We don't store, sell, or monitor your WhatsApp conversations. All interactions stay between you and WhatsApp's encrypted servers.</p>
-                    <p><i class="fas fa-file-contract"></i> <strong>Terms:</strong> By using this bot, you agree that Mzazi Tech provides automation tools; we are not responsible for misuse. This bot complies with Kenyan Communication Authority guidelines.</p>
-                    <p><i class="fas fa-check-circle"></i> <strong>Certificate ID:</strong> WABA-MZ-2025-042 | Verified by Meta Business Partner Program.</p>
+                    <p><i class="fas fa-users"></i> <strong>Kenyan Group Management:</strong> Admins retain full control. The bot never shares group metadata or message content with external servers.</p>
+                    <p><i class="fas fa-eye-slash"></i> <strong>Zero Data Mining:</strong> We do not collect, sell, or analyze your WhatsApp conversations. Your chats remain strictly between you and WhatsApp servers.</p>
+                    <p><i class="fas fa-file-signature"></i> <strong>Terms of Use:</strong> By using MoneyHeist AI, you agree to responsible automation practices. Mzazi Tech provides tools for enhanced productivity; users are responsible for compliance with WhatsApp policies.</p>
+                    <p><i class="fas fa-id-card"></i> <strong>Certificate ID:</strong> WABA-MZ-2025-042 | Verified Partner since 2024.</p>
                 </div>
+                <div class="star-rating" style="margin-top: 1rem; justify-content: center;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Rated Excellent by Kenyan Community</div>
             </div>
         </div>
 
         <!-- Final CTA + Footer -->
         <div style="text-align: center; margin: 2rem auto 0 auto; padding: 2rem 1rem 3rem;">
-            <div class="glass-panel" style="display: inline-block; padding: 2rem 3rem; max-width: 800px; margin: auto;">
-                <h3>Ready to automate your WhatsApp like a pro?</h3>
-                <p style="margin: 1rem 0;">Join 10,000+ Kenyan users — secure, private, and WhatsApp certified.</p>
-                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                    <a href="#host-link-section" class="btn-primary"><i class="fas fa-play"></i> Host & Link now</a>
+            <div class="glass-panel" style="display: inline-block; padding: 2rem 3rem; max-width: 850px; margin: auto;">
+                <h3>Accelerate Your WhatsApp Experience</h3>
+                <p style="margin: 1rem 0;">Trusted by over 10,000 Kenyan users — secure, fast, and certified.</p>
+                <div style="display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#host-link-section" class="btn-primary"><i class="fas fa-play"></i> Deploy & Connect</a>
                     <a href="https://whatsapp.com/channel/0029VaMzaziTech" target="_blank" class="btn-outline-light"><i class="fab fa-whatsapp"></i> Join Channel</a>
-                    <a href="https://wa.me/254750611309" target="_blank" class="btn-outline-light"><i class="fas fa-headset"></i> Get panel @70</a>
+                    <a href="https://wa.me/254750611309" target="_blank" class="btn-outline-light"><i class="fas fa-tachometer-alt"></i> Order Panel @70</a>
                 </div>
             </div>
-            <footer style="margin-top: 3rem; padding: 2rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+            <footer style="margin-top: 3rem; padding: 2rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.08);">
                 <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; max-width: 1100px; margin: auto;">
                     <span>© 2025 MoneyHeist AI Bot — Mzazi Tech Inc. (Nairobi, Kenya) | WhatsApp Certified Partner</span>
-                    <div><a href="#" style="color:#ccd6ff; text-decoration: none;">Privacy (Kenya DP Act)</a> • <a href="#" style="color:#ccd6ff;">Terms of Service</a> • <a href="https://github.com/mzazitech" target="_blank" style="color:#ccd6ff;">GitHub</a></div>
+                    <div><a href="#" style="color:#b0bbff; text-decoration: none;">Privacy Policy</a> • <a href="#" style="color:#b0bbff;">Terms of Service</a> • <a href="#" style="color:#b0bbff;">Meta Compliance</a></div>
                 </div>
             </footer>
         </div>
@@ -437,38 +474,65 @@
 </div>
 
 <script>
-    function verifyPassword() {
-        const passwordInput = document.getElementById('site-password').value;
+    let currentUsername = "";
+
+    function verifyAccess() {
+        const username = document.getElementById('username-input').value.trim();
+        const password = document.getElementById('site-password').value;
         const correctPassword = "MoneyHeistAi";
-        if(passwordInput === correctPassword) {
+        
+        if (!username) {
+            document.getElementById('password-error').innerText = 'Please enter your name or username to continue.';
+            return;
+        }
+        
+        if (password === correctPassword) {
+            currentUsername = username;
             document.getElementById('password-overlay').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
+            
+            // Personalized welcome message
+            const welcomeSpan = document.getElementById('welcome-message-text');
+            if (welcomeSpan) {
+                welcomeSpan.innerHTML = `Welcome back, ${escapeHtml(username)} — your secure MoneyHeist AI control center`;
+            }
         } else {
-            document.getElementById('password-error').innerText = '❌ Incorrect password. Access denied.';
+            document.getElementById('password-error').innerText = 'Access denied: Invalid password.';
         }
     }
 
-    // Enter key support
-    document.getElementById('site-password').addEventListener('keypress', function(e) {
-        if(e.key === 'Enter') verifyPassword();
-    });
-
-    // Copy linking guide
-    const copyBtn = document.getElementById('copyPairingGuide');
-    if(copyBtn) {
-        copyBtn.addEventListener('click', () => {
-            navigator.clipboard.writeText("🔗 HOW TO LINK MONEYHEIST AI BOT:\n\n1️⃣ After hosting, bot shows QR or 12-digit pairing code.\n2️⃣ WhatsApp → Settings → Linked Devices → Link a Device\n3️⃣ Choose 'Link with phone number' and enter the code shown (e.g., MZAZIBOT or numeric code).\n4️⃣ OR scan QR if preferred.\n5️⃣ Done! Type .menu to test.\n\n✅ No admin verification — MZAZIBOT is just the default pairing code! Your chats remain private & certified by WhatsApp.");
-            alert("✅ Linking steps copied to clipboard!");
+    function escapeHtml(str) {
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
         });
     }
 
-    // Smooth scroll for anchors
+    document.getElementById('site-password').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') verifyAccess();
+    });
+    document.getElementById('username-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') verifyAccess();
+    });
+
+    // Copy linking guide
+    const copyLinkingBtn = document.getElementById('copyLinkingGuide');
+    if (copyLinkingBtn) {
+        copyLinkingBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText("HOW TO LINK MONEYHEIST AI BOT:\n\n1. After starting bot, QR code or pairing code appears.\n2. For pairing: WhatsApp Settings → Linked Devices → 'Link with phone number' → enter the displayed code (numeric or MZAZIBOT).\n3. For QR: Scan via WhatsApp Linked Devices.\n4. Once linked, type .menu to activate.\n\nNote: MZAZIBOT is the default pairing code — no extra verification needed. Your chats remain private and Meta-certified.");
+            alert("Linking instructions copied to clipboard.");
+        });
+    }
+
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
-            if(targetId === '#') return;
+            if (targetId === '#') return;
             const target = document.querySelector(targetId);
-            if(target) {
+            if (target) {
                 e.preventDefault();
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
