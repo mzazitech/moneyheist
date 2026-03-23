@@ -4,37 +4,57 @@
     flex-direction:column;
     font-family:Arial, sans-serif;
     color:white;
+    overflow:hidden;
+    position:relative;
 ">
 
-    <!-- TOP 1/3 (HEADING) -->
+    <!-- ANIMATED BACKGROUND -->
     <div style="
+        position:absolute;
+        width:200%;
+        height:200%;
+        background:linear-gradient(45deg, #ff003c, #00f0ff, #ff003c);
+        background-size:400% 400%;
+        animation:moveBg 12s ease infinite;
+        opacity:0.15;
+        z-index:0;
+    "></div>
+
+    <!-- KEYFRAMES -->
+    <style>
+        @keyframes moveBg {
+            0% { transform:translate(0,0); }
+            50% { transform:translate(-25%, -25%); }
+            100% { transform:translate(0,0); }
+        }
+
+        @media (max-width: 768px) {
+            .heading h1 {
+                font-size: 1.8rem !important;
+            }
+            .heading p {
+                font-size: 0.9rem !important;
+            }
+            .content {
+                padding: 15px !important;
+            }
+        }
+    </style>
+
+    <!-- TOP 1/3 -->
+    <div class="heading" style="
         height:33.33%;
         display:flex;
         justify-content:center;
         align-items:center;
         text-align:center;
-        background:radial-gradient(circle at top, #1a1a1a, #000);
         position:relative;
-        overflow:hidden;
+        z-index:2;
+        padding:10px;
     ">
-
-        <!-- Glow -->
-        <div style="
-            position:absolute;
-            width:300px;
-            height:300px;
-            background:#ff003c;
-            border-radius:50%;
-            filter:blur(120px);
-            opacity:0.3;
-        "></div>
-
-        <div style="
-            position:relative;
-            z-index:2;
-        ">
+        <div>
             <h1 style="
-                font-size:2.5rem;
+                font-size:3rem;
                 color:#ff003c;
                 letter-spacing:3px;
                 text-shadow:0 0 15px #ff003c;
@@ -43,19 +63,19 @@
                 MONEYHEIST AI BOT
             </h1>
 
-            <p style="color:#ccc;">
+            <p style="color:#ddd;">
                 Created By Mzazi Tech Inc.
             </p>
         </div>
     </div>
 
-
-    <!-- BOTTOM 2/3 (HOSTING GUIDE) -->
-    <div style="
+    <!-- BOTTOM 2/3 -->
+    <div class="content" style="
         height:66.66%;
         overflow:auto;
-        padding:30px 20px;
-        background:linear-gradient(135deg,#000,#0f0f0f);
+        padding:30px;
+        position:relative;
+        z-index:2;
     ">
 
         <h2 style="
@@ -69,34 +89,37 @@
         <div style="
             max-width:800px;
             margin:auto;
-            background:rgba(255,255,255,0.05);
+            background:rgba(0,0,0,0.6);
             padding:25px;
             border-radius:15px;
+            backdrop-filter:blur(10px);
         ">
 
             <p>1️⃣ Make sure you have a hosting panel.</p>
 
-            <p>2️⃣ If not, get one here:</p>
+            <p>2️⃣ If you don’t have one:</p>
 
-            <a href="https://t.me/mzazidev" target="_blank" style="
-                display:inline-block;
-                padding:10px 15px;
-                margin:5px;
-                background:#0088cc;
-                color:white;
-                border-radius:8px;
-                text-decoration:none;
-            ">Telegram</a>
+            <div style="margin:10px 0;">
+                <a href="https://t.me/mzazidev" target="_blank" style="
+                    display:inline-block;
+                    padding:10px 15px;
+                    margin:5px;
+                    background:#0088cc;
+                    color:white;
+                    border-radius:8px;
+                    text-decoration:none;
+                ">Telegram</a>
 
-            <a href="https://wa.me/254750611309" target="_blank" style="
-                display:inline-block;
-                padding:10px 15px;
-                margin:5px;
-                background:#25D366;
-                color:white;
-                border-radius:8px;
-                text-decoration:none;
-            ">WhatsApp</a>
+                <a href="https://wa.me/254750611309" target="_blank" style="
+                    display:inline-block;
+                    padding:10px 15px;
+                    margin:5px;
+                    background:#25D366;
+                    color:white;
+                    border-radius:8px;
+                    text-decoration:none;
+                ">WhatsApp</a>
+            </div>
 
             <p>3️⃣ Download the ZIP file:</p>
 
@@ -110,11 +133,11 @@
                 text-decoration:none;
             ">Download ZIP</a>
 
-            <p>4️⃣ Upload ZIP to panel.</p>
-            <p>5️⃣ Unarchive it.</p>
-            <p>6️⃣ Move files to root (../).</p>
-            <p>7️⃣ Go to console and press Start.</p>
-            <p>8️⃣ Enter your WhatsApp number (254..., no +, no spaces).</p>
+            <p>4️⃣ Upload ZIP to your panel.</p>
+            <p>5️⃣ Unarchive (extract) it.</p>
+            <p>6️⃣ Move all files to root folder (../).</p>
+            <p>7️⃣ Go to console and click <b>Start</b>.</p>
+            <p>8️⃣ Enter WhatsApp number starting with 254 (no +, no spaces).</p>
             <p>9️⃣ Enter the code on WhatsApp.</p>
 
             <p>🔐 Code: <b style="color:#ff003c;">MZAZIBOT</b></p>
@@ -131,7 +154,7 @@
                 text-decoration:none;
             ">Open WhatsApp</a>
 
-            <p>1️⃣1️⃣ Type <b>.menu</b> to confirm.</p>
+            <p>1️⃣1️⃣ Type <b>.menu</b> to confirm the bot is working.</p>
 
         </div>
 
