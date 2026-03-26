@@ -3,379 +3,666 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>MoneyHeist AI Bot | STK Push • Panel Store • Mzazi Tech</title>
-    <meta name="description" content="MoneyHeist AI Bot – Purchase hosting panels via M-Pesa STK push. Instant activation, WhatsApp certified automation, and support payments.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <title>MoneyHeist AI Bot | Premium WhatsApp Bot & Unlimited Servers</title>
+    <meta name="description" content="MoneyHeist AI Bot – Buy WhatsApp bot source code & unlimited server panels via M-Pesa STK. Modern admin panel, instant download after payment.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Paystack Inline JS -->
     <script src="https://js.paystack.co/v1/inline.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #f0f3ff; overflow-x: hidden; }
-        #password-overlay {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #05050c;
+            color: #f0f3ff;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-orb {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 40%, rgba(255, 0, 80, 0.2), transparent 60%),
+                        radial-gradient(circle at 85% 70%, rgba(0, 212, 255, 0.2), transparent 65%);
+            z-index: -2;
+            animation: slowDrift 28s infinite alternate;
+        }
+        @keyframes slowDrift {
+            0% { transform: scale(1) translate(0%, 0%); opacity: 0.6; }
+            100% { transform: scale(1.08) translate(2%, -3%); opacity: 1; }
+        }
+        .noise {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(20px);
-            z-index: 9999;
+            background: repeating-radial-gradient(circle at 20% 30%, rgba(0,0,0,0.1), rgba(0,0,0,0.1) 2px, transparent 2px, transparent 4px);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Glassmorphism core */
+        .glass-card {
+            background: rgba(12, 14, 30, 0.6);
+            backdrop-filter: blur(14px);
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(255, 70, 100, 0.5);
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.6);
+            transform: translateY(-4px);
+        }
+        .btn-neon {
+            background: linear-gradient(105deg, #ff1a4f, #ff4d7a);
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 3rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(255, 30, 80, 0.3);
+        }
+        .btn-neon:hover {
+            transform: scale(1.02);
+            filter: brightness(1.1);
+            box-shadow: 0 6px 18px rgba(255, 30, 80, 0.5);
+        }
+        .btn-outline-glass {
+            background: transparent;
+            border: 1px solid rgba(255,255,240,0.3);
+            backdrop-filter: blur(4px);
+            padding: 0.6rem 1.4rem;
+            border-radius: 3rem;
+            font-weight: 500;
+            transition: 0.2s;
+            cursor: pointer;
+            color: #f0f0ff;
+        }
+        .btn-outline-glass:hover {
+            background: rgba(255, 70, 100, 0.2);
+            border-color: #ff4d6d;
+        }
+        input, select {
+            background: rgba(20, 22, 45, 0.85);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 1rem;
+            padding: 12px 16px;
+            color: white;
+            width: 100%;
+            outline: none;
+            transition: 0.2s;
+        }
+        input:focus, select:focus {
+            border-color: #ff4d6d;
+            box-shadow: 0 0 0 3px rgba(255, 77, 109, 0.2);
+        }
+        label {
+            font-weight: 500;
+            margin-bottom: 6px;
+            display: block;
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+            color: #b9c3ff;
+        }
+        .price-tag {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFD966, #FFA559);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .toast-notify {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a1e2f;
+            backdrop-filter: blur(16px);
+            padding: 12px 24px;
+            border-radius: 60px;
+            z-index: 10000;
+            font-weight: 500;
             display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 4px solid #ff4d6d;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            animation: fadeUp 0.3s ease;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        .success-glow {
+            animation: successPulse 0.6s ease-out;
+        }
+        @keyframes successPulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 100, 0.5); }
+            100% { box-shadow: 0 0 0 20px rgba(0, 255, 100, 0); }
+        }
+        .admin-dashboard {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(12px);
+            z-index: 10001;
             justify-content: center;
             align-items: center;
-            transition: all 0.5s ease;
         }
-        .password-container {
-            background: rgba(10, 12, 28, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 2rem;
-            padding: 2.5rem;
-            max-width: 450px;
+        .admin-panel {
+            background: #0c0e1c;
             width: 90%;
-            text-align: center;
-            border: 1px solid rgba(255, 0, 60, 0.4);
-            box-shadow: 0 25px 45px rgba(0,0,0,0.5);
+            max-width: 1000px;
+            max-height: 80vh;
+            overflow-y: auto;
+            border-radius: 2rem;
+            padding: 2rem;
+            border: 1px solid #ff4d6d;
         }
-        .password-container h2 { font-size: 1.8rem; margin-bottom: 0.5rem; background: linear-gradient(135deg, #ff4d6d, #00e0ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .password-container input { width: 100%; padding: 1rem; margin: 1.5rem 0; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 1rem; color: white; font-size: 1rem; outline: none; }
-        .password-container input:focus { border-color: #ff4d6d; box-shadow: 0 0 15px rgba(255, 0, 60, 0.3); }
-        .password-container button { background: linear-gradient(105deg, #ff0040, #ff2068); border: none; padding: 0.8rem 2rem; border-radius: 2rem; font-weight: 600; cursor: pointer; color: white; width: 100%; font-size: 1rem; transition: 0.2s; }
-        .password-container button:hover { transform: scale(1.02); filter: brightness(1.05); }
-        .error-msg { color: #ff6b6b; margin-top: 0.5rem; font-size: 0.85rem; }
-        #main-content { display: none; }
-        .animated-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 30%, #0a0a1a, #03030a); z-index: -2; }
-        .gradient-orbs { position: fixed; width: 100%; height: 100%; background: radial-gradient(circle at 70% 20%, rgba(255, 0, 60, 0.2), transparent 50%), radial-gradient(circle at 30% 80%, rgba(0, 240, 255, 0.2), transparent 60%); z-index: -1; animation: subtleShift 20s infinite alternate; }
-        @keyframes subtleShift { 0% { transform: scale(1) translate(0%, 0%); opacity: 0.6; } 100% { transform: scale(1.05) translate(2%, -2%); opacity: 0.9; } }
-        .glass-panel { background: rgba(10, 12, 28, 0.65); backdrop-filter: blur(14px); border-radius: 2rem; border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.25s ease; }
-        .glass-card-hover:hover { transform: translateY(-6px); border-color: rgba(255, 0, 60, 0.4); box-shadow: 0 20px 35px -15px rgba(0, 0, 0, 0.5); }
-        .btn-primary { background: linear-gradient(105deg, #ff0040, #ff2068); border: none; padding: 0.8rem 1.8rem; border-radius: 3rem; font-weight: 600; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.6rem; color: white; text-decoration: none; cursor: pointer; }
-        .btn-primary:hover { transform: scale(1.02); filter: brightness(1.08); box-shadow: 0 8px 20px rgba(255, 0, 64, 0.4); }
-        .btn-outline-light { background: transparent; border: 1px solid rgba(255,255,240,0.3); backdrop-filter: blur(4px); padding: 0.7rem 1.5rem; border-radius: 3rem; font-weight: 500; transition: 0.2s; color: #eef; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
-        .btn-outline-light:hover { background: rgba(255,255,255,0.08); border-color: #ff4d6d; }
-        .feature-icon { font-size: 2rem; background: rgba(255, 0, 60, 0.15); width: 3.5rem; height: 3.5rem; display: flex; align-items: center; justify-content: center; border-radius: 1.2rem; color: #ff5e7e; }
-        .stat-number { font-size: 2.6rem; font-weight: 800; background: linear-gradient(135deg, #fff, #ffb0c3); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .kenyan-rating { background: linear-gradient(135deg, #FFD700, #FFA500); padding: 0.2rem 0.6rem; border-radius: 20px; font-weight: bold; color: #1e1e2a; }
-        .pricing-badge { font-size: 1.8rem; font-weight: 800; color: #ffdf6e; }
-        .success-wa-btn { background: #25D366; color: #0a0a0f; border-radius: 40px; padding: 10px 22px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; transition: 0.2s; text-decoration: none; }
-        .success-wa-btn:hover { transform: scale(1.02); filter: brightness(1.05); }
-        input, select { background: rgba(20, 22, 40, 0.8); border: 1px solid rgba(255,255,255,0.2); border-radius: 1rem; padding: 12px 16px; color: white; width: 100%; font-size: 0.95rem; transition: 0.2s; outline: none; }
-        input:focus, select:focus { border-color: #ff4d6d; box-shadow: 0 0 8px rgba(255, 0, 64, 0.3); }
-        label { font-weight: 500; margin-bottom: 6px; display: block; font-size: 0.85rem; letter-spacing: 0.3px; color: #ccd9ff; }
-        .two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        @media (max-width: 768px) { .two-col-grid { grid-template-columns: 1fr; } .hero-title { font-size: 2.2rem !important; } }
+        .product-card {
+            background: rgba(8, 10, 24, 0.7);
+            border-radius: 1.5rem;
+            padding: 1.2rem;
+            transition: 0.2s;
+        }
+        .flex-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+        @media (max-width: 760px) {
+            .hero-title { font-size: 2rem !important; }
+        }
+        .country-code-badge {
+            background: rgba(0,0,0,0.4);
+            padding: 12px 16px;
+            border-radius: 1rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .phone-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(20, 22, 45, 0.85);
+            border-radius: 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 0 6px;
+        }
+        .phone-wrapper span {
+            background: #2a2e4a;
+            padding: 0 12px;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .phone-wrapper input {
+            border: none;
+            background: transparent;
+            padding: 12px 6px;
+        }
+        .floating-support {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 12px;
+        }
+        .wa-float {
+            background: #25D366;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 6px 14px black;
+            transition: 0.2s;
+        }
+        .wa-float:hover { transform: scale(1.07); }
+        .admin-login-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            padding: 6px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            z-index: 1000;
+            font-size: 0.8rem;
+        }
     </style>
 </head>
 <body>
 
-<div id="password-overlay">
-    <div class="password-container">
-        <i class="fas fa-shield-alt" style="font-size: 3rem; color: #ff4d6d; margin-bottom: 1rem;"></i>
-        <h2>Secure Access</h2>
-        <p style="color: #aaa; margin-bottom: 1rem;">Enter site password to continue</p>
-        <input type="password" id="site-password" placeholder="Enter password" autocomplete="off">
-        <button onclick="verifyPassword()">Unlock Platform <i class="fas fa-unlock-alt"></i></button>
-        <div id="password-error" class="error-msg"></div>
-        <p style="font-size: 0.7rem; margin-top: 1rem; color: #666;">🔐 Authorized by Mzazi Tech Inc.</p>
+<!-- LOGIN OVERLAY (Username + Password) -->
+<div id="loginOverlay" style="position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.96); backdrop-filter: blur(24px); z-index: 9999; display: flex; align-items: center; justify-content: center;">
+    <div class="glass-card" style="max-width: 420px; width: 90%; padding: 2rem; text-align: center;">
+        <i class="fas fa-robot" style="font-size: 3rem; color: #ff4d6d; margin-bottom: 1rem;"></i>
+        <h2 style="font-size: 1.8rem;">MoneyHeist AI</h2>
+        <p style="margin-bottom: 1.5rem;">Secure access · Mzazi Tech Inc.</p>
+        <input type="text" id="loginUsername" placeholder="Username" style="margin-bottom: 1rem;">
+        <input type="password" id="loginPassword" placeholder="Password">
+        <button id="doLoginBtn" class="btn-neon" style="width: 100%; margin-top: 1.8rem;">Unlock Platform</button>
+        <div id="loginError" style="color:#ff7b7b; margin-top: 1rem;"></div>
     </div>
 </div>
 
-<div id="main-content">
-    <div class="animated-bg"></div>
-    <div class="gradient-orbs"></div>
-    <main style="position: relative; z-index: 2;">
-        <!-- Hero section (unchanged but trimmed for brevity, kept essential) -->
-        <section style="padding: 3rem 1.5rem 2rem 1.5rem; max-width: 1300px; margin: 0 auto;">
-            <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.2rem;">
-                <div style="display: inline-flex; background: rgba(255,0,60,0.2); backdrop-filter: blur(8px); padding: 0.3rem 1rem; border-radius: 60px; gap: 8px; font-size: 0.85rem;">
-                    <i class="fas fa-certificate" style="color:#ff4d6d;"></i> <span>✓ WhatsApp Official Partner | M-Pesa STK Ready</span>
-                </div>
-                <h1 class="hero-title" style="font-size: 3.5rem; font-weight: 800; background: linear-gradient(145deg, #FFFFFF, #FF4D6D, #00D4FF); -webkit-background-clip: text; background-clip: text; color: transparent;">MONEYHEIST AI BOT</h1>
-                <p style="font-size: 1.2rem; max-width: 700px; color: #cdd9ff;">WhatsApp's most advanced AI automation — <strong>Pay via M-Pesa STK Push</strong> & get instant panel access. Built by <strong class="text-glow">Mzazi Tech Inc. (Kenya)</strong></p>
-                <div style="display: flex; gap: 18px; flex-wrap: wrap; justify-content: center;">
-                    <a href="#panel-purchase" class="btn-primary"><i class="fas fa-shopping-cart"></i> Buy Panel (STK Push)</a>
-                    <a href="#support-stk" class="btn-outline-light"><i class="fas fa-hand-holding-usd"></i> Support / Custom STK</a>
-                </div>
-            </div>
-        </section>
+<!-- MAIN APP (hidden until login) -->
+<div id="mainApp" style="display: none;">
+    <div class="bg-orb"></div>
+    <div class="noise"></div>
 
-        <!-- Stats / Trust -->
-        <div style="max-width: 1100px; margin: 0.5rem auto 2rem auto; padding: 0 1.5rem;">
-            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; background: rgba(8,8,20,0.5); backdrop-filter: blur(8px); border-radius: 2rem; padding: 1.2rem 2rem;">
-                <div style="text-align: center;"><div class="stat-number">10K+</div><div>Kenyan users</div></div>
-                <div style="text-align: center;"><div class="stat-number">4.98</div><div><span class="kenyan-rating"><i class="fas fa-star"></i> Rating</span></div></div>
-                <div style="text-align: center;"><div class="stat-number">24/7</div><div>STK support & panel activation</div></div>
-                <div style="text-align: center;"><div class="stat-number">@70</div><div>Starting from 70 KSH/server</div></div>
+    <main style="position: relative; z-index: 2; padding: 1rem 1.5rem 3rem;">
+        <!-- Hero -->
+        <div style="max-width: 1300px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div style="display: inline-block; background: rgba(255,0,80,0.2); border-radius: 40px; padding: 0.3rem 1rem; backdrop-filter: blur(4px);">
+                    <i class="fas fa-bolt"></i> Premium AI WhatsApp Ecosystem
+                </div>
+                <h1 class="hero-title" style="font-size: 3.5rem; font-weight: 800; background: linear-gradient(145deg, #fff, #ff5e8e, #3bc9ff); -webkit-background-clip: text; background-clip: text; color: transparent;">MONEYHEIST AI BOT</h1>
+                <p style="max-width: 680px; margin: 1rem auto;">Buy bot source code or unlimited server panels via M-Pesa STK. Instant download & WhatsApp delivery.</p>
             </div>
         </div>
 
-        <!-- ========== PANEL PRICE LIST & PURCHASE SECTION ========== -->
-        <div id="panel-purchase" style="max-width: 1300px; margin: 2rem auto; padding: 0 1.5rem;">
-            <div style="text-align: center; margin-bottom: 1.5rem;">
-                <span style="background: #ff003c20; padding: 0.3rem 1.2rem; border-radius: 60px;"><i class="fas fa-tags"></i> PANEL PRICE LIST • STK PUSH ACTIVATION</span>
-                <h2 style="font-size: 2rem; margin-top: 0.5rem;">Choose your hosting plan</h2>
-            </div>
-            <div class="two-col-grid">
-                <!-- Left: Price list & details -->
-                <div class="glass-panel" style="padding: 1.8rem;">
-                    <h3><i class="fas fa-server"></i> Hosting Panel Rates (KSH)</h3>
-                    <div style="margin: 1rem 0; display: flex; flex-direction: column; gap: 12px;">
-                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding: 8px 0;"><span>🚀 1 Server (Basic)</span><span class="pricing-badge">70 KES</span></div>
-                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding: 8px 0;"><span>⚡ 2 Servers (Dual node)</span><span class="pricing-badge">100 KES</span></div>
-                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding: 8px 0;"><span>🔥 3 Servers (Cluster)</span><span class="pricing-badge">130 KES</span></div>
-                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding: 8px 0;"><span>💎 4 Servers (Pro)</span><span class="pricing-badge">160 KES</span></div>
-                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding: 8px 0;"><span>🏆 5 Servers (Ultimate)</span><span class="pricing-badge">190 KES</span></div>
-                    </div>
-                    <div style="background: rgba(0,0,0,0.3); border-radius: 1rem; padding: 1rem; margin-top: 0.5rem;">
-                        <i class="fas fa-bolt"></i> <strong>What you get:</strong> Full Node.js WhatsApp Bot panel, pre-configured MoneyHeist AI, auto-updater, and priority support. <strong>Unlimited WhatsApp numbers per panel.</strong>
-                    </div>
-                </div>
-
-                <!-- Right: Buy form with phone number & STK push -->
-                <div class="glass-panel" style="padding: 1.8rem;">
-                    <h3><i class="fas fa-mobile-alt"></i> Buy Panel via M-Pesa STK Push</h3>
-                    <p style="font-size: 0.85rem; margin: 0.5rem 0 1rem 0;">Enter your payment number & select servers. STK prompt will be sent instantly.</p>
-                    <div>
-                        <label>📱 M-Pesa Phone Number (STK push)</label>
-                        <input type="tel" id="panelPhone" placeholder="2547XXXXXXXX" value="2547">
-                        <label style="margin-top: 12px;">📧 Email (for receipt)</label>
-                        <input type="email" id="panelEmail" placeholder="your@email.com">
-                        <label style="margin-top: 12px;">🎛️ Select Server Package</label>
-                        <select id="panelPlan">
-                            <option value="70">1 Server - 70 KES</option>
-                            <option value="100">2 Servers - 100 KES</option>
-                            <option value="130">3 Servers - 130 KES</option>
-                            <option value="160">4 Servers - 160 KES</option>
-                            <option value="190">5 Servers - 190 KES</option>
-                        </select>
-                        <button id="payWithPaystackBtn" class="btn-primary" style="width: 100%; margin-top: 1.8rem; justify-content: center;"><i class="fas fa-credit-card"></i> Pay via M-Pesa STK Push</button>
-                        <div id="panelPaymentStatus" style="margin-top: 1rem; text-align: center;"></div>
-                    </div>
+        <!-- CHECKOUT DETAILS CARD (global) -->
+        <div class="glass-card" style="max-width: 1100px; margin: 0 auto 2.5rem; padding: 1.8rem;">
+            <h3><i class="fas fa-user-check"></i> Your Payment Details</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+                <div><label>Full Name</label><input type="text" id="globalName" placeholder="John Mwangi"></div>
+                <div><label>Email</label><input type="email" id="globalEmail" placeholder="client@example.com"></div>
+                <div><label>Country</label><select id="globalCountry"></select></div>
+                <div><label>Mobile Network</label><select id="globalNetwork"></select></div>
+                <div style="grid-column: span 2;"><label>Phone Number</label>
+                    <div class="phone-wrapper"><span id="countryCodePrefix">+254</span><input type="tel" id="globalPhoneDigits" placeholder="7XX XXX XXX"></div>
+                    <small style="opacity: 0.7;">Enter remaining digits after country code</small>
                 </div>
             </div>
         </div>
 
-        <!-- ========== SUPPORT SECTOR: Custom amount & STK Push ========== -->
-        <div id="support-stk" style="max-width: 1300px; margin: 1rem auto; padding: 0 1.5rem;">
-            <div style="text-align: center; margin-bottom: 1rem;">
-                <span style="background: #00e0ff20; padding: 0.3rem 1.2rem; border-radius: 60px;"><i class="fas fa-hand-holding-heart"></i> SUPPORT & CUSTOM STK PUSH</span>
-                <h2 style="font-size: 2rem; margin-top: 0.5rem;">Send any amount via STK (Support / Donation)</h2>
-            </div>
-            <div class="glass-panel" style="max-width: 600px; margin: 0 auto; padding: 2rem;">
-                <p style="margin-bottom: 1rem;"><i class="fas fa-info-circle"></i> Enter your phone number and amount to receive M-Pesa STK push. After payment, we'll confirm via WhatsApp.</p>
-                <label>📱 Phone Number (STK destination)</label>
-                <input type="tel" id="supportPhone" placeholder="2547XXXXXXXX" value="2547">
-                <label style="margin-top: 14px;">💰 Amount (KES) - min 10</label>
-                <input type="number" id="supportAmount" placeholder="e.g., 50, 100, 200" min="10" value="50">
-                <label style="margin-top: 14px;">📧 Email (optional)</label>
-                <input type="email" id="supportEmail" placeholder="your@email.com">
-                <button id="supportStkBtn" class="btn-primary" style="width: 100%; margin-top: 1.8rem; justify-content: center;"><i class="fas fa-exchange-alt"></i> Request STK Push (Pay via M-Pesa)</button>
-                <div id="supportPaymentStatus" style="margin-top: 1rem; text-align: center;"></div>
+        <!-- PANEL SECTION (Unlimited Servers + Admin Panel) -->
+        <div style="max-width: 1300px; margin: 0 auto 2rem;">
+            <div style="margin-bottom: 1rem;"><span class="glass-card" style="padding: 0.3rem 1.2rem;"><i class="fas fa-server"></i> UNLIMITED SERVER PANELS</span></div>
+            <div class="flex-grid" id="panelProductsContainer">
+                <!-- dynamic panel cards injected via js -->
             </div>
         </div>
 
-        <!-- Additional existing sections: hosting guide, features etc (condensed but preserved) -->
-        <div id="features" style="max-width: 1300px; margin: 2rem auto; padding: 0 1.5rem;">
-            <div style="text-align: center;"><h2 style="font-size: 2rem;">🧠 Intelligence that respects your privacy</h2></div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem;">
-                <div class="glass-panel glass-card-hover" style="padding: 1.6rem;"><div class="feature-icon"><i class="fas fa-brain"></i></div><h3>GPT‑4 Turbo</h3><p>End-to-end encrypted conversations, image recognition, memory.</p></div>
-                <div class="glass-panel glass-card-hover" style="padding: 1.6rem;"><div class="feature-icon"><i class="fas fa-download"></i></div><h3>Media Master</h3><p>Download TikTok, Instagram, YouTube via WhatsApp.</p></div>
-                <div class="glass-panel glass-card-hover" style="padding: 1.6rem;"><div class="feature-icon"><i class="fas fa-users"></i></div><h3>Group Guardian</h3><p>Anti-spam, welcome messages, Kenyan group support.</p></div>
-            </div>
+        <!-- BOT SOURCE SECTION (Versions) -->
+        <div style="max-width: 1300px; margin: 0 auto 2rem;">
+            <div style="margin-bottom: 1rem;"><span class="glass-card" style="padding: 0.3rem 1.2rem;"><i class="fas fa-code"></i> BOT SOURCE CODE</span></div>
+            <div class="flex-grid" id="botProductsContainer"></div>
         </div>
 
-        <!-- WhatsApp Channel & Hosting support (short) -->
-        <div style="max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.5rem;">
-                <div class="glass-panel" style="padding: 1.8rem; text-align: center;"><i class="fab fa-whatsapp" style="font-size: 2.5rem; color:#25D366;"></i><h3>Official WhatsApp Channel</h3><a href="https://whatsapp.com/channel/0029VaMzaziTech" target="_blank" class="btn-primary" style="margin-top: 1rem;">Join Channel →</a></div>
-                <div class="glass-panel" style="padding: 1.8rem; text-align: center;"><i class="fas fa-headset" style="font-size: 2.5rem; color:#ff4d6d;"></i><h3>Panel Support & Activation</h3><p>After STK payment, click confirm button below to get unlimited panel.</p></div>
+        <!-- SUPPORT SECTION -->
+        <div class="glass-card" style="max-width: 800px; margin: 2rem auto; padding: 1.8rem;">
+            <h3><i class="fas fa-headset"></i> Support / Donation</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+                <div><label>Full Name</label><input type="text" id="supportName" placeholder="Your name"></div>
+                <div><label>Email</label><input type="email" id="supportEmail" placeholder="email@domain.com"></div>
+                <div><label>Country</label><select id="supportCountry"></select></div>
+                <div><label>Network</label><select id="supportNetwork"></select></div>
+                <div><label>Phone (auto code)</label>
+                    <div class="phone-wrapper"><span id="supportCodeSpan">+254</span><input type="tel" id="supportPhoneDigits" placeholder="7XX XXX XXX"></div>
+                </div>
+                <div><label>Amount (KES)</label><input type="number" id="supportAmount" placeholder="Min 10 KES"></div>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem;">
+                <button id="supportStkBtn" class="btn-neon"><i class="fas fa-hand-holding-usd"></i> Donate via STK</button>
+                <a href="https://wa.me/254750611309?text=Hello%20MoneyHeist%20Support" target="_blank" class="btn-outline-glass"><i class="fab fa-whatsapp"></i> WhatsApp Support</a>
+                <a href="mailto:support@mzazitech.com?subject=MoneyHeist%20Bot%20Help" class="btn-outline-glass"><i class="far fa-envelope"></i> Email Support</a>
+                <a href="https://whatsapp.com/channel/0029VaMzaziTech" target="_blank" class="btn-outline-glass"><i class="fab fa-whatsapp"></i> Join Channel</a>
             </div>
         </div>
-
-        <div style="max-width: 1000px; margin: 2rem auto; padding: 0 1.5rem;">
-            <div class="glass-panel" style="padding: 2rem; text-align: center;">
-                <h2><i class="fas fa-gavel"></i> Kenyan Terms & Privacy</h2>
-                <p>MoneyHeist AI Bot is WhatsApp Business certified. Your M-Pesa payments are processed securely via Paystack. We never store card details.</p>
-            </div>
-        </div>
-
-        <footer style="margin-top: 3rem; padding: 2rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
-            <p>© 2025 MoneyHeist AI Bot — Mzazi Tech Inc. (Nairobi, Kenya) | STK Push powered by Paystack</p>
-        </footer>
+        <footer style="text-align: center; padding: 2rem; opacity: 0.7;">© 2025 MoneyHeist AI Bot — Mzazi Tech Inc. | Secure STK Payments</footer>
     </main>
+
+    <div class="floating-support">
+        <a href="https://wa.me/254750611309" target="_blank" class="wa-float"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <div class="admin-login-btn" id="adminLoginBtn"><i class="fas fa-user-shield"></i> Admin</div>
+
+    <!-- Admin Dashboard Modal -->
+    <div id="adminDashboard" class="admin-dashboard">
+        <div class="admin-panel">
+            <div style="display: flex; justify-content: space-between;"><h2><i class="fas fa-database"></i> Transactions (Neon.tech style)</h2><button id="closeAdmin" style="background: none; border: none; font-size: 1.5rem; color: white; cursor: pointer;">&times;</button></div>
+            <div style="overflow-x: auto; margin-top: 1rem;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead><tr style="background: #ff4d6d20;"><th>Date</th><th>Name</th><th>Phone</th><th>Item</th><th>Amount</th><th>Status</th></tr></thead>
+                    <tbody id="adminTbody"><tr><td colspan="6">Loading...</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
-    // ---------- PASSWORD AUTH ----------
-    function verifyPassword() {
-        const passwordInput = document.getElementById('site-password').value;
-        const correctPassword = "MoneyHeistAi";
-        if(passwordInput === correctPassword) {
-            document.getElementById('password-overlay').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
-        } else {
-            document.getElementById('password-error').innerText = '❌ Incorrect password. Access denied.';
+    // ---------- GLOBAL DATA ----------
+    const COUNTRIES = [
+        { name: "Kenya", code: "+254", networks: ["Safaricom (M-Pesa)", "Airtel", "Telkom"] },
+        { name: "Tanzania", code: "+255", networks: ["Vodacom", "Halotel", "Airtel", "Tigo"] },
+        { name: "Uganda", code: "+256", networks: ["MTN", "Airtel"] },
+        { name: "Nigeria", code: "+234", networks: ["MTN", "Glo", "Airtel", "9mobile"] },
+        { name: "Rwanda", code: "+250", networks: ["MTN", "Airtel"] },
+        { name: "South Africa", code: "+27", networks: ["Vodacom", "MTN", "Telkom"] }
+    ].sort((a,b) => a.name.localeCompare(b.name));
+
+    // Panel Products
+    const PANEL_PLANS = [
+        { id: "server1", name: "1 Unlimited Server", price: 80, desc: "Full WhatsApp bot hosting" },
+        { id: "server2", name: "2 Unlimited Server", price: 100, desc: "Multi-instance support" },
+        { id: "server3", name: "3 Unlimited Server", price: 130, desc: "Load balanced" },
+        { id: "server4", name: "4 Unlimited Server", price: 160, desc: "Priority support" },
+        { id: "server5", name: "5 Unlimited Server", price: 190, desc: "Ultimate performance" },
+        { id: "adminpanel", name: "Admin Panel", price: 300, desc: "Full dashboard + analytics" }
+    ];
+    const BOT_VERSIONS = [
+        { id: "v1", name: "Version 1.0", price: 70, desc: "Normal WhatsApp Bot", downloadKey: "v1" },
+        { id: "v2", name: "Version 2.0", price: 150, desc: "Bot + GitHub + Vercel access", downloadKey: "v2" },
+        { id: "v3", name: "Version 3.0", price: 350, desc: "Bot + GitHub + Vercel + Admin Panel", downloadKey: "v3" },
+        { id: "v4", name: "Version 4.0", price: 500, desc: "Unencrypted, easy to clone", downloadKey: "v4" }
+    ];
+
+    // MOCK DOWNLOAD URLS (replace with real CDN if needed)
+    const DOWNLOAD_MAP = {
+        v1: "https://storage.yourcdn.com/moneyheist_v1.zip",
+        v2: "https://storage.yourcdn.com/moneyheist_v2.zip",
+        v3: "https://storage.yourcdn.com/moneyheist_v3.zip",
+        v4: "https://storage.yourcdn.com/moneyheist_v4.zip"
+    };
+
+    let paystackPublicKey = "pk_live_a99c78833d675611a4786b37f839a59be9d8bc3e"; // Provided key
+
+    // ---------- Helper: Toast ----------
+    function showToast(message, type = "info") {
+        const existing = document.querySelector(".toast-notify");
+        if(existing) existing.remove();
+        const toast = document.createElement("div");
+        toast.className = "toast-notify";
+        toast.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-triangle' : 'fa-info-circle'}"></i> ${message}`;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 4000);
+    }
+
+    // Transactions storage (localStorage)
+    let transactions = JSON.parse(localStorage.getItem("moneyheist_tx")) || [];
+    function saveTransaction(tx) {
+        transactions.unshift(tx);
+        localStorage.setItem("moneyheist_tx", JSON.stringify(transactions.slice(0, 100)));
+    }
+
+    // Populate country & network dropdowns
+    function populateCountries(selectEl, defaultCountry = "Kenya") {
+        selectEl.innerHTML = "";
+        COUNTRIES.forEach(c => {
+            const opt = document.createElement("option");
+            opt.value = c.name;
+            opt.textContent = c.name;
+            if(c.name === defaultCountry) opt.selected = true;
+            selectEl.appendChild(opt);
+        });
+        triggerNetworkUpdate(selectEl);
+        selectEl.addEventListener("change", () => triggerNetworkUpdate(selectEl));
+    }
+    function triggerNetworkUpdate(countrySelect) {
+        const selectedCountryName = countrySelect.value;
+        const countryObj = COUNTRIES.find(c => c.name === selectedCountryName);
+        if(!countryObj) return;
+        const networkSelect = countrySelect.id === "globalCountry" ? document.getElementById("globalNetwork") : document.getElementById("supportNetwork");
+        if(networkSelect) {
+            networkSelect.innerHTML = "";
+            countryObj.networks.forEach(net => {
+                const opt = document.createElement("option");
+                opt.value = net;
+                opt.textContent = net;
+                networkSelect.appendChild(opt);
+            });
         }
-    }
-    document.getElementById('site-password')?.addEventListener('keypress', function(e) { if(e.key === 'Enter') verifyPassword(); });
-
-    // ---------- PAYSTACK CONFIGURATION ----------
-    //  IMPORTANT: Replace with your live Paystack public key when going to production.
-    //  For testing, use test public key from Paystack dashboard. M-Pesa STK works on test keys with test numbers.
-    const PAYSTACK_PUBLIC_KEY = "pk_live_a99c78833d675611a4786b37f839a59be9d8bc3e"; // 🔁 REPLACE WITH YOUR PAYSTACK PUBLIC KEY
-    // For demo we will show alert if key is placeholder
-    const SUPPORT_WHATSAPP_NUMBER = "254750611309"; // Admin WhatsApp for confirmations
-
-    // Helper: generate random transaction reference
-    function generateRef(prefix) {
-        return prefix + "_" + Date.now() + "_" + Math.random().toString(36).substring(2, 8);
+        // update prefix on both phone fields
+        const prefixSpan = document.getElementById("countryCodePrefix");
+        if(prefixSpan && countrySelect.id === "globalCountry") prefixSpan.innerText = countryObj.code;
+        const supportPrefix = document.getElementById("supportCodeSpan");
+        if(supportPrefix && countrySelect.id === "supportCountry") supportPrefix.innerText = countryObj.code;
     }
 
-    // Generic Paystack payment handler with callback for both panel & support
-    function initiatePaystackPayment({ amount, email, phone, metadata, onSuccess, onClose }) {
-        if(!PAYSTACK_PUBLIC_KEY) {
-            alert("⚠️ Paystack public key not configured. Please update PAYSTACK_PUBLIC_KEY with your live/test key from Paystack dashboard.\n\nFor testing, use a valid test key and ensure M-Pesa test numbers are enabled.");
+    function getFullPhone(prefixSpanId, digitsId) {
+        const prefix = document.getElementById(prefixSpanId).innerText.trim();
+        let digits = document.getElementById(digitsId).value.trim();
+        digits = digits.replace(/\D/g, '');
+        if(digits.startsWith("0")) digits = digits.substring(1);
+        const full = prefix + digits;
+        if(full.length < 9) return null;
+        return full;
+    }
+
+    function validateCheckout(global = true) {
+        const name = document.getElementById("globalName").value.trim();
+        const email = document.getElementById("globalEmail").value.trim();
+        const country = document.getElementById("globalCountry").value;
+        const network = document.getElementById("globalNetwork").value;
+        const phone = getFullPhone("countryCodePrefix", "globalPhoneDigits");
+        if(!name || !email || !country || !network || !phone) {
+            showToast("Please fill all checkout fields correctly", "error");
+            return null;
+        }
+        if(!email.includes("@")) { showToast("Valid email required", "error"); return null; }
+        if(phone.length < 10) { showToast("Invalid phone number", "error"); return null; }
+        return { name, email, country, network, phone };
+    }
+
+    // Paystack initiator
+    function initiatePayment(amount, email, phone, metadata, onSuccessCallback) {
+        if(!paystackPublicKey || paystackPublicKey === "YOUR_PUBLIC_KEY") {
+            showToast("Paystack key missing. Use live key.", "error");
             return false;
         }
-        if(!amount || amount <= 0) { alert("Invalid amount"); return false; }
-        if(!email || !email.includes("@")) { 
-            // fallback: if no email, create dummy
-            email = phone + "@mpesa.user";
-        }
-        const koboAmount = Math.round(amount * 100);
         const handler = PaystackPop.setup({
-            key: PAYSTACK_PUBLIC_KEY,
+            key: paystackPublicKey,
             email: email,
-            amount: koboAmount,
+            amount: amount * 100,
             currency: "KES",
-            ref: generateRef(metadata?.type || "txn"),
-            metadata: { custom_fields: [{ display_name: "Phone", variable_name: "phone", value: phone }, ...(metadata?.extra || []) ] },
-            callback: function(response) {
-                // payment completed successfully on Paystack (user saw STK and paid)
+            ref: "MH_" + Date.now() + "_" + Math.random().toString(36).substr(2, 8),
+            metadata: { custom_fields: [{ display_name: "Phone", variable_name: "phone", value: phone }, { display_name: "Item", value: metadata.item }] },
+            callback: async (response) => {
                 if(response.status === 'success') {
-                    if(onSuccess) onSuccess(response, { amount, phone, email, metadata });
+                    showToast(`✅ Payment successful! Ref: ${response.reference}`, "success");
+                    onSuccessCallback(response, metadata);
+                    // store transaction
+                    saveTransaction({
+                        reference: response.reference,
+                        name: metadata.customerName,
+                        phone: phone,
+                        email: email,
+                        item: metadata.item,
+                        amount: amount,
+                        status: "success",
+                        timestamp: new Date().toISOString()
+                    });
                 } else {
-                    alert("Payment was not completed. Please try again.");
-                    if(onClose) onClose();
+                    showToast("Payment failed or was cancelled", "error");
                 }
             },
-            onClose: function() {
-                // user closed popup
-                if(onClose) onClose();
-            }
+            onClose: () => { showToast("Payment window closed", "info"); }
         });
         handler.openIframe();
         return true;
     }
 
-    // ------------------- PANEL PURCHASE LOGIC -------------------
-    const payBtn = document.getElementById('payWithPaystackBtn');
-    const panelStatusDiv = document.getElementById('panelPaymentStatus');
-    
-    payBtn.addEventListener('click', function() {
-        let phone = document.getElementById('panelPhone').value.trim();
-        let email = document.getElementById('panelEmail').value.trim();
-        let planSelect = document.getElementById('panelPlan');
-        let amount = parseInt(planSelect.value);
-        let planText = planSelect.options[planSelect.selectedIndex].text;
-        
-        // Phone validation: must start with 254 and have 9-12 digits
-        if(!phone) { alert("Please enter your M-Pesa phone number (e.g., 2547XXXXXXXX)"); return; }
-        if(!phone.match(/^254[0-9]{9}$/)) {
-            alert("Phone number must be in format 2547XXXXXXXX (12 digits including 254). Example: 254712345678");
-            return;
-        }
-        if(!email) email = phone + "@moneype.com";
-        
-        panelStatusDiv.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Initializing STK push, please wait...';
-        
-        initiatePaystackPayment({
-            amount: amount,
-            email: email,
-            phone: phone,
-            metadata: { type: "panel_purchase", plan: planText, servers: planText },
-            onSuccess: (response, details) => {
-                // Show success and add WhatsApp confirmation button (as per spec: after paying add a button)
-                panelStatusDiv.innerHTML = `
-                    <div style="background: #00aa5522; padding: 12px; border-radius: 1rem; margin-top: 12px;">
-                        <i class="fas fa-check-circle" style="color:#0f0;"></i> Payment of KES ${details.amount} successful!<br>
-                        Ref: ${response.reference}<br>
-                        <strong style="display:block; margin: 10px 0;">✅ UNLIMITED PANEL ACCESS READY</strong>
-                        <a href="https://wa.me/${SUPPORT_WHATSAPP_NUMBER}?text=Confirm%20Payment%20was%20successful%20for%20unlimited%20panel%20%7C%20Ref%3A%20${response.reference}%20%7C%20Amount%3A%20KES%20${details.amount}%20%7C%20Phone%3A%20${details.phone}" 
-                           target="_blank" class="success-wa-btn" style="display:inline-flex; margin-top: 8px;">
-                           <i class="fab fa-whatsapp"></i> ✅ If you have paid, click here to confirm & get unlimited panel
-                        </a>
-                        <p style="font-size:0.75rem; margin-top:8px;">After clicking, our team will activate your panel immediately.</p>
-                    </div>
-                `;
-            },
-            onClose: () => {
-                panelStatusDiv.innerHTML = '<span style="color: #ffaa66;">⚠️ STK payment window closed. If you completed payment, click the confirmation button above after paying.</span>';
-            }
-        });
-    });
-    
-    // ------------------- SUPPORT SECTOR STK PUSH -------------------
-    const supportBtn = document.getElementById('supportStkBtn');
-    const supportStatusDiv = document.getElementById('supportPaymentStatus');
-    
-    supportBtn.addEventListener('click', function() {
-        let phone = document.getElementById('supportPhone').value.trim();
-        let amount = parseInt(document.getElementById('supportAmount').value);
-        let email = document.getElementById('supportEmail').value.trim();
-        
-        if(!phone) { alert("Please enter phone number for STK push"); return; }
-        if(!phone.match(/^254[0-9]{9}$/)) {
-            alert("Phone number must start with 254 and 9 digits after (e.g., 254712345678)");
-            return;
-        }
-        if(isNaN(amount) || amount < 10) { alert("Amount must be at least 10 KES"); return; }
-        if(!email) email = phone + "@support.ke";
-        
-        supportStatusDiv.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending STK push to your phone...';
-        
-        initiatePaystackPayment({
-            amount: amount,
-            email: email,
-            phone: phone,
-            metadata: { type: "support_donation", purpose: "custom support" },
-            onSuccess: (response, details) => {
-                supportStatusDiv.innerHTML = `
-                    <div style="background: #2a6b3f33; padding: 12px; border-radius: 1rem;">
-                        <i class="fas fa-heart" style="color:#ff4d6d;"></i> Support payment of KES ${details.amount} completed!<br>
-                        Ref: ${response.reference}<br>
-                        <a href="https://wa.me/${SUPPORT_WHATSAPP_NUMBER}?text=Support%20Payment%20Confirmed%20%7C%20Ref%3A%20${response.reference}%20%7C%20Amount%3A%20KES%20${details.amount}%20%7C%20Phone%3A%20${details.phone}" 
-                           target="_blank" class="success-wa-btn" style="margin-top: 10px; background:#25D366; color:#000;">
-                           <i class="fab fa-whatsapp"></i> ✅ Confirm payment & get support
-                        </a>
-                        <p style="font-size:12px; margin-top:6px;">Thank you for supporting Mzazi Tech! Click to notify admin.</p>
-                    </div>
-                `;
-            },
-            onClose: () => {
-                supportStatusDiv.innerHTML = '<span style="color: #ffaa66;">Transaction popup closed. If you completed payment, please click the confirmation button after paying.</span>';
-            }
-        });
-    });
-    
-    // smooth scroll anchors
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if(targetId === '#') return;
-            const target = document.querySelector(targetId);
-            if(target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-        });
-    });
-    
-    // optional copy pairing guide (keep original functionality)
-    const copyBtn = document.getElementById('copyPairingGuide');
-    if(copyBtn) {
-        copyBtn.addEventListener('click', () => {
-            navigator.clipboard.writeText("🔗 HOW TO LINK BOT: After hosting, bot shows QR or pairing code. Use WhatsApp settings → Linked devices → Link with phone number.");
-            alert("✅ Linking steps copied!");
+    // Purchase Handlers
+    function handlePanelPurchase(plan) {
+        const user = validateCheckout(true);
+        if(!user) return;
+        showToast("Processing payment, please wait...", "info");
+        initiatePayment(plan.price, user.email, user.phone, {
+            item: `Panel: ${plan.name}`,
+            customerName: user.name,
+            isPanel: true,
+            planId: plan.id
+        }, (response, meta) => {
+            // After payment -> redirect to WhatsApp with pre-filled message
+            const msg = `Hello MoneyHeist AI, I just purchased ${meta.item} for KES ${plan.price}. Ref: ${response.reference}. Name: ${user.name}`;
+            const waUrl = `https://wa.me/254750611309?text=${encodeURIComponent(msg)}`;
+            window.open(waUrl, "_blank");
+            showToast("Redirecting to WhatsApp confirmation...", "success");
         });
     }
+
+    function handleBotPurchase(bot) {
+        const user = validateCheckout(true);
+        if(!user) return;
+        showToast("Processing bot purchase, verifying payment...", "info");
+        initiatePayment(bot.price, user.email, user.phone, {
+            item: `Bot: ${bot.name}`,
+            customerName: user.name,
+            botId: bot.id,
+            downloadKey: bot.downloadKey
+        }, (response, meta) => {
+            // Fake verification loader effect before download
+            showToast("✓ Payment verified. Preparing download...", "success");
+            setTimeout(() => {
+                const url = DOWNLOAD_MAP[meta.downloadKey];
+                if(url && url !== "#") {
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `MoneyHeist_${bot.name.replace(/\s/g, '')}.zip`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    showToast(`Download started for ${bot.name}`, "success");
+                } else {
+                    showToast("Download link missing. Contact support.", "error");
+                }
+            }, 1200);
+        });
+    }
+
+    // Support donation
+    function supportDonation() {
+        const name = document.getElementById("supportName").value.trim();
+        const email = document.getElementById("supportEmail").value.trim();
+        const country = document.getElementById("supportCountry").value;
+        const network = document.getElementById("supportNetwork").value;
+        const amount = parseInt(document.getElementById("supportAmount").value);
+        const phone = getFullPhone("supportCodeSpan", "supportPhoneDigits");
+        if(!name || !email || !country || !network || !amount || amount < 10 || !phone) {
+            showToast("Fill all support fields and amount (min 10 KES)", "error");
+            return;
+        }
+        initiatePayment(amount, email, phone, { item: `Support Donation`, customerName: name }, (response) => {
+            showToast(`Thank you for support! Ref: ${response.reference}`, "success");
+        });
+    }
+
+    // Render Products
+    function renderProducts() {
+        const panelContainer = document.getElementById("panelProductsContainer");
+        panelContainer.innerHTML = PANEL_PLANS.map(plan => `
+            <div class="product-card glass-card" style="padding: 1.2rem;">
+                <h4><i class="fas fa-microchip"></i> ${plan.name}</h4>
+                <p style="font-size:0.9rem;">${plan.desc}</p>
+                <div class="price-tag" style="margin: 1rem 0;">KES ${plan.price}</div>
+                <button class="btn-neon" data-panel-id="${plan.id}" style="width:100%">Buy Now <i class="fas fa-arrow-right"></i></button>
+            </div>
+        `).join("");
+        document.querySelectorAll("[data-panel-id]").forEach(btn => {
+            const id = btn.getAttribute("data-panel-id");
+            const plan = PANEL_PLANS.find(p => p.id === id);
+            btn.onclick = () => handlePanelPurchase(plan);
+        });
+
+        const botContainer = document.getElementById("botProductsContainer");
+        botContainer.innerHTML = BOT_VERSIONS.map(bot => `
+            <div class="product-card glass-card" style="padding: 1.2rem;">
+                <h4><i class="fab fa-js"></i> ${bot.name}</h4>
+                <p>${bot.desc}</p>
+                <div class="price-tag" style="margin: 1rem 0;">KES ${bot.price}</div>
+                <button class="btn-neon" data-bot-id="${bot.id}" style="width:100%">Get Source</button>
+            </div>
+        `).join("");
+        document.querySelectorAll("[data-bot-id]").forEach(btn => {
+            const id = btn.getAttribute("data-bot-id");
+            const bot = BOT_VERSIONS.find(b => b.id === id);
+            btn.onclick = () => handleBotPurchase(bot);
+        });
+    }
+
+    // Admin Dashboard (localStorage)
+    function refreshAdminTable() {
+        const tbody = document.getElementById("adminTbody");
+        if(!tbody) return;
+        const stored = JSON.parse(localStorage.getItem("moneyheist_tx")) || [];
+        if(stored.length === 0) { tbody.innerHTML = '<tr><td colspan="6">No transactions yet</td></tr>'; return; }
+        tbody.innerHTML = stored.map(tx => `
+            <tr><td>${new Date(tx.timestamp).toLocaleString()}</td><td>${tx.name || 'N/A'}</td><td>${tx.phone}</td><td>${tx.item}</td><td>${tx.amount}</td><td>${tx.status}</td></tr>
+        `).join('');
+    }
+
+    // Login logic
+    document.getElementById("doLoginBtn").addEventListener("click", () => {
+        const user = document.getElementById("loginUsername").value.trim();
+        const pwd = document.getElementById("loginPassword").value;
+        if(pwd === "MoneyHeistAi" && user.length > 0) {
+            document.getElementById("loginOverlay").style.display = "none";
+            document.getElementById("mainApp").style.display = "block";
+            initApp();
+        } else {
+            document.getElementById("loginError").innerText = "Invalid credentials (Password: MoneyHeistAi)";
+        }
+    });
+    function initApp() {
+        // populate global country, support country
+        populateCountries(document.getElementById("globalCountry"), "Kenya");
+        populateCountries(document.getElementById("supportCountry"), "Kenya");
+        // initial network sync
+        renderProducts();
+        // Support button
+        document.getElementById("supportStkBtn").addEventListener("click", supportDonation);
+        // Admin dashboard
+        document.getElementById("adminLoginBtn").addEventListener("click", () => {
+            const username = prompt("Admin username:");
+            const password = prompt("Admin password:");
+            if(username === "Mzazi8946" && password === "8946Mzazi") {
+                refreshAdminTable();
+                document.getElementById("adminDashboard").style.display = "flex";
+            } else alert("Access denied");
+        });
+        document.getElementById("closeAdmin").addEventListener("click", () => {
+            document.getElementById("adminDashboard").style.display = "none";
+        });
+        // sync country code prefix on change
+        document.getElementById("globalCountry").addEventListener("change", () => {
+            const c = COUNTRIES.find(c => c.name === document.getElementById("globalCountry").value);
+            if(c) document.getElementById("countryCodePrefix").innerText = c.code;
+        });
+        document.getElementById("supportCountry").addEventListener("change", () => {
+            const c = COUNTRIES.find(c => c.name === document.getElementById("supportCountry").value);
+            if(c) document.getElementById("supportCodeSpan").innerText = c.code;
+        });
+    }
+    // Optional: allow enter on login
+    document.getElementById("loginPassword")?.addEventListener("keypress", (e) => { if(e.key === "Enter") document.getElementById("doLoginBtn").click(); });
 </script>
 </body>
 </html>
