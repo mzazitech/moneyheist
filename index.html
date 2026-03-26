@@ -379,10 +379,10 @@
         { id: "adminpanel", name: "Admin Panel", price: 300, desc: "Full dashboard + analytics" }
     ];
     const BOT_VERSIONS = [
-        { id: "v1", name: "Version 1.0", price: 70, desc: "Normal WhatsApp Bot", downloadKey: "v1" },
-        { id: "v2", name: "Version 2.0", price: 150, desc: "Bot + GitHub + Vercel access", downloadKey: "v2" },
-        { id: "v3", name: "Version 3.0", price: 350, desc: "Bot + GitHub + Vercel + Admin Panel", downloadKey: "v3" },
-        { id: "v4", name: "Version 4.0", price: 500, desc: "Unencrypted, easy to clone", downloadKey: "v4" }
+        { id: "v1", name: "Money Heist Version 1.0", price: 70, desc: "Normal WhatsApp Bot", downloadKey: "v1" },
+        { id: "v2", name: "Money Heist Version 2.0", price: 150, desc: "Bot + GitHub + Vercel access", downloadKey: "v2" },
+        { id: "v3", name: "Money Heist Version 3.0", price: 350, desc: "Bot + GitHub + Vercel + Admin Panel", downloadKey: "v3" },
+        { id: "v4", name: "Money Heist Version 4.0", price: 500, desc: "Unencrypted, easy to clone", downloadKey: "v4" }
     ];
 
     // MOCK DOWNLOAD URLS (replace with real CDN if needed)
@@ -474,7 +474,7 @@
 
     // Paystack initiator
     function initiatePayment(amount, email, phone, metadata, onSuccessCallback) {
-        if(!paystackPublicKey || paystackPublicKey === "YOUR_PUBLIC_KEY") {
+        if(!paystackPublicKey) {
             showToast("Paystack key missing. Use live key.", "error");
             return false;
         }
