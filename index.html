@@ -233,7 +233,7 @@
 
     // Generic Paystack payment handler with callback for both panel & support
     function initiatePaystackPayment({ amount, email, phone, metadata, onSuccess, onClose }) {
-        if(!PAYSTACK_PUBLIC_KEY || PAYSTACK_PUBLIC_KEY === "pk_live_a99c78833d675611a4786b37f839a59be9d8bc3e") {
+        if(!PAYSTACK_PUBLIC_KEY) {
             alert("⚠️ Paystack public key not configured. Please update PAYSTACK_PUBLIC_KEY with your live/test key from Paystack dashboard.\n\nFor testing, use a valid test key and ensure M-Pesa test numbers are enabled.");
             return false;
         }
