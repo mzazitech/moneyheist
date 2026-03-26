@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>MoneyHeist AI Bot | STK Push • Panel Store • Mzazi Tech</title>
-    <meta name="description" content="MoneyHeist AI Bot – Purchase hosting panels via M-Pesa STK push. Instant activation, WhatsApp certified automation, and support payments.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <title>MoneyHeist AI Bot | Bot Files • Pterodactyl</title>
+    <meta name="description" content="MoneyHeist AI Bot – Buy WhatsApp bot source code via M-Pesa STK. Deploy on Pterodactyl. Admin dashboard with Neon.tech DB.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Paystack Inline JS -->
     <script src="https://js.paystack.co/v1/inline.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -24,7 +23,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: all 0.5s ease;
         }
         .password-container {
             background: rgba(10, 12, 28, 0.95);
@@ -35,35 +33,45 @@
             width: 90%;
             text-align: center;
             border: 1px solid rgba(255, 0, 60, 0.4);
-            box-shadow: 0 25px 45px rgba(0,0,0,0.5);
         }
         .password-container h2 { font-size: 1.8rem; margin-bottom: 0.5rem; background: linear-gradient(135deg, #ff4d6d, #00e0ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .password-container input { width: 100%; padding: 1rem; margin: 1.5rem 0; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 1rem; color: white; font-size: 1rem; outline: none; }
-        .password-container input:focus { border-color: #ff4d6d; box-shadow: 0 0 15px rgba(255, 0, 60, 0.3); }
-        .password-container button { background: linear-gradient(105deg, #ff0040, #ff2068); border: none; padding: 0.8rem 2rem; border-radius: 2rem; font-weight: 600; cursor: pointer; color: white; width: 100%; font-size: 1rem; transition: 0.2s; }
-        .password-container button:hover { transform: scale(1.02); filter: brightness(1.05); }
-        .error-msg { color: #ff6b6b; margin-top: 0.5rem; font-size: 0.85rem; }
+        .password-container input { width: 100%; padding: 1rem; margin: 1.5rem 0; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 1rem; color: white; }
+        .password-container input:focus { border-color: #ff4d6d; }
+        .password-container button { background: linear-gradient(105deg, #ff0040, #ff2068); border: none; padding: 0.8rem 2rem; border-radius: 2rem; font-weight: 600; cursor: pointer; color: white; width: 100%; }
+        .error-msg { color: #ff6b6b; margin-top: 0.5rem; }
         #main-content { display: none; }
         .animated-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 30%, #0a0a1a, #03030a); z-index: -2; }
         .gradient-orbs { position: fixed; width: 100%; height: 100%; background: radial-gradient(circle at 70% 20%, rgba(255, 0, 60, 0.2), transparent 50%), radial-gradient(circle at 30% 80%, rgba(0, 240, 255, 0.2), transparent 60%); z-index: -1; animation: subtleShift 20s infinite alternate; }
-        @keyframes subtleShift { 0% { transform: scale(1) translate(0%, 0%); opacity: 0.6; } 100% { transform: scale(1.05) translate(2%, -2%); opacity: 0.9; } }
+        @keyframes subtleShift { 0% { transform: scale(1) translate(0%, 0%); } 100% { transform: scale(1.05) translate(2%, -2%); } }
         .glass-panel { background: rgba(10, 12, 28, 0.65); backdrop-filter: blur(14px); border-radius: 2rem; border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.25s ease; }
         .glass-card-hover:hover { transform: translateY(-6px); border-color: rgba(255, 0, 60, 0.4); box-shadow: 0 20px 35px -15px rgba(0, 0, 0, 0.5); }
         .btn-primary { background: linear-gradient(105deg, #ff0040, #ff2068); border: none; padding: 0.8rem 1.8rem; border-radius: 3rem; font-weight: 600; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.6rem; color: white; text-decoration: none; cursor: pointer; }
-        .btn-primary:hover { transform: scale(1.02); filter: brightness(1.08); box-shadow: 0 8px 20px rgba(255, 0, 64, 0.4); }
-        .btn-outline-light { background: transparent; border: 1px solid rgba(255,255,240,0.3); backdrop-filter: blur(4px); padding: 0.7rem 1.5rem; border-radius: 3rem; font-weight: 500; transition: 0.2s; color: #eef; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .btn-primary:hover { transform: scale(1.02); filter: brightness(1.08); }
+        .btn-outline-light { background: transparent; border: 1px solid rgba(255,255,240,0.3); backdrop-filter: blur(4px); padding: 0.7rem 1.5rem; border-radius: 3rem; font-weight: 500; color: #eef; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
         .btn-outline-light:hover { background: rgba(255,255,255,0.08); border-color: #ff4d6d; }
         .feature-icon { font-size: 2rem; background: rgba(255, 0, 60, 0.15); width: 3.5rem; height: 3.5rem; display: flex; align-items: center; justify-content: center; border-radius: 1.2rem; color: #ff5e7e; }
         .stat-number { font-size: 2.6rem; font-weight: 800; background: linear-gradient(135deg, #fff, #ffb0c3); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .kenyan-rating { background: linear-gradient(135deg, #FFD700, #FFA500); padding: 0.2rem 0.6rem; border-radius: 20px; font-weight: bold; color: #1e1e2a; }
         .pricing-badge { font-size: 1.8rem; font-weight: 800; color: #ffdf6e; }
-        .success-wa-btn { background: #25D366; color: #0a0a0f; border-radius: 40px; padding: 10px 22px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; transition: 0.2s; text-decoration: none; }
-        .success-wa-btn:hover { transform: scale(1.02); filter: brightness(1.05); }
-        input, select { background: rgba(20, 22, 40, 0.8); border: 1px solid rgba(255,255,255,0.2); border-radius: 1rem; padding: 12px 16px; color: white; width: 100%; font-size: 0.95rem; transition: 0.2s; outline: none; }
-        input:focus, select:focus { border-color: #ff4d6d; box-shadow: 0 0 8px rgba(255, 0, 64, 0.3); }
-        label { font-weight: 500; margin-bottom: 6px; display: block; font-size: 0.85rem; letter-spacing: 0.3px; color: #ccd9ff; }
+        .success-wa-btn { background: #25D366; color: #0a0a0f; border-radius: 40px; padding: 10px 22px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+        .success-wa-btn:hover { transform: scale(1.02); }
+        input, select { background: rgba(20, 22, 40, 0.8); border: 1px solid rgba(255,255,255,0.2); border-radius: 1rem; padding: 12px 16px; color: white; width: 100%; outline: none; }
+        input:focus, select:focus { border-color: #ff4d6d; }
+        label { font-weight: 500; margin-bottom: 6px; display: block; font-size: 0.85rem; color: #ccd9ff; }
         .two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
         @media (max-width: 768px) { .two-col-grid { grid-template-columns: 1fr; } .hero-title { font-size: 2.2rem !important; } }
+        .floating-support { position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 10px; }
+        .support-btn { background: #25D366; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8rem; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: 0.2s; text-decoration: none; }
+        .support-btn.chat { background: #0088cc; }
+        .support-btn:hover { transform: scale(1.05); }
+        .admin-login-btn { position: fixed; bottom: 20px; left: 20px; background: rgba(0,0,0,0.5); padding: 8px 15px; border-radius: 30px; cursor: pointer; backdrop-filter: blur(5px); z-index: 1000; font-size: 0.8rem; }
+        .admin-dashboard { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; backdrop-filter: blur(8px); justify-content: center; align-items: center; }
+        .admin-panel { background: #11121a; width: 90%; max-width: 1000px; max-height: 80vh; overflow-y: auto; border-radius: 2rem; padding: 2rem; border: 1px solid #ff4d6d; }
+        .admin-panel h2 { margin-bottom: 1rem; }
+        .admin-panel table { width: 100%; border-collapse: collapse; color: #eee; }
+        .admin-panel th, .admin-panel td { border-bottom: 1px solid #333; padding: 10px; text-align: left; }
+        .admin-panel th { background: #ff4d6d20; }
+        .close-admin { float: right; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -72,11 +80,10 @@
     <div class="password-container">
         <i class="fas fa-shield-alt" style="font-size: 3rem; color: #ff4d6d; margin-bottom: 1rem;"></i>
         <h2>Secure Access</h2>
-        <p style="color: #aaa; margin-bottom: 1rem;">Enter site password to continue</p>
-        <input type="password" id="site-password" placeholder="Enter password" autocomplete="off">
-        <button onclick="verifyPassword()">Unlock Platform <i class="fas fa-unlock-alt"></i></button>
+        <p style="color: #aaa;">Enter site password to continue</p>
+        <input type="password" id="site-password" placeholder="Enter password">
+        <button onclick="verifyPassword()">Unlock Platform</button>
         <div id="password-error" class="error-msg"></div>
-        <p style="font-size: 0.7rem; margin-top: 1rem; color: #666;">🔐 Authorized by Mzazi Tech Inc.</p>
     </div>
 </div>
 
@@ -84,298 +91,302 @@
     <div class="animated-bg"></div>
     <div class="gradient-orbs"></div>
     <main style="position: relative; z-index: 2;">
-        <!-- Hero section (unchanged but trimmed for brevity, kept essential) -->
-        <section style="padding: 3rem 1.5rem 2rem 1.5rem; max-width: 1300px; margin: 0 auto;">
-            <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.2rem;">
-                <div style="display: inline-flex; background: rgba(255,0,60,0.2); backdrop-filter: blur(8px); padding: 0.3rem 1rem; border-radius: 60px; gap: 8px; font-size: 0.85rem;">
+
+        <!-- Hero -->
+        <section style="padding: 3rem 1.5rem 2rem; max-width: 1300px; margin: 0 auto;">
+            <div style="text-align: center; gap: 1.2rem;">
+                <div style="display: inline-flex; background: rgba(255,0,60,0.2); backdrop-filter: blur(8px); padding: 0.3rem 1rem; border-radius: 60px;">
                     <i class="fas fa-certificate" style="color:#ff4d6d;"></i> <span>✓ WhatsApp Official Partner | M-Pesa STK Ready</span>
                 </div>
-                <h1 class="hero-title" style="font-size: 3.5rem; font-weight: 800; background: linear-gradient(145deg, #FFFFFF, #FF4D6D, #00D4FF); -webkit-background-clip: text; background-clip: text; color: transparent;">MONEYHEIST AI BOT</h1>
-                <p style="font-size: 1.2rem; max-width: 700px; color: #cdd9ff;">WhatsApp's most advanced AI automation — <strong>Pay via M-Pesa STK Push</strong> & get instant panel access. Built by <strong class="text-glow">Mzazi Tech Inc. (Kenya)</strong></p>
-                <div style="display: flex; gap: 18px; flex-wrap: wrap; justify-content: center;">
-                    <a href="#panel-purchase" class="btn-primary"><i class="fas fa-shopping-cart"></i> Buy Panel (STK Push)</a>
-                    <a href="#support-stk" class="btn-outline-light"><i class="fas fa-hand-holding-usd"></i> Support / Custom STK</a>
+                <h1 style="font-size: 3.5rem; font-weight: 800; background: linear-gradient(145deg, #FFFFFF, #FF4D6D, #00D4FF); -webkit-background-clip: text; background-clip: text; color: transparent;">MONEYHEIST AI BOT</h1>
+                <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; color: #cdd9ff;">Buy bot source code & hosting panels via M-Pesa STK. Deploy on Pterodactyl. Admin dashboard included.</p>
+                <div style="display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; margin-top: 1rem;">
+                    <a href="#file-purchase" class="btn-primary"><i class="fas fa-file-archive"></i> Buy Bot Source</a>
+                    <a href="#pterodactyl-guide" class="btn-outline-light"><i class="fas fa-dragon"></i> Pterodactyl Guide</a>
+                    <a href="#support-stk" class="btn-outline-light"><i class="fas fa-hand-holding-usd"></i> Support</a>
                 </div>
             </div>
         </section>
 
-        <!-- Stats / Trust -->
-        <div style="max-width: 1100px; margin: 0.5rem auto 2rem auto; padding: 0 1.5rem;">
+        <!-- Stats -->
+        <div style="max-width: 1100px; margin: 0 auto 2rem; padding: 0 1.5rem;">
             <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; background: rgba(8,8,20,0.5); backdrop-filter: blur(8px); border-radius: 2rem; padding: 1.2rem 2rem;">
                 <div style="text-align: center;"><div class="stat-number">10K+</div><div>Kenyan users</div></div>
                 <div style="text-align: center;"><div class="stat-number">4.98</div><div><span class="kenyan-rating"><i class="fas fa-star"></i> Rating</span></div></div>
-                <div style="text-align: center;"><div class="stat-number">24/7</div><div>STK support & panel activation</div></div>
-                <div style="text-align: center;"><div class="stat-number">@70</div><div>Starting from 70 KSH/server</div></div>
+                <div style="text-align: center;"><div class="stat-number">24/7</div><div>STK support</div></div>
+                <div style="text-align: center;"><div class="stat-number">@70</div><div>Bot from 70 KSH</div></div>
             </div>
         </div>
 
-        <!-- ========== PANEL PRICE LIST & PURCHASE SECTION ========== -->
-        <div id="panel-purchase" style="max-width: 1300px; margin: 2rem auto; padding: 0 1.5rem;">
+        <!-- FILE PURCHASE SECTION (NEW) -->
+        <div id="file-purchase" style="max-width: 1300px; margin: 2rem auto; padding: 0 1.5rem;">
             <div style="text-align: center; margin-bottom: 1.5rem;">
-                <span style="background: #ff003c20; padding: 0.3rem 1.2rem; border-radius: 60px;"><i class="fas fa-tags"></i> PANEL PRICE LIST • STK PUSH ACTIVATION</span>
-                <h2 style="font-size: 2rem; margin-top: 0.5rem;">Choose your hosting plan</h2>
+                <span style="background: #ff003c20; padding: 0.3rem 1.2rem; border-radius: 60px;"><i class="fas fa-file-code"></i> BOT SOURCE CODE • UNLIMITED ACCESS</span>
+                <h2 style="font-size: 2rem; margin-top: 0.5rem;">Choose your bot version</h2>
             </div>
             <div class="two-col-grid">
-                <!-- Left: Price list & details -->
+                <!-- Price List -->
                 <div class="glass-panel" style="padding: 1.8rem;">
-                    <h3><i class="fas fa-server"></i> Hosting Panel Rates (KSH)</h3>
+                    <h3><i class="fas fa-tag"></i> Bot Source Prices</h3>
                     <div style="margin: 1rem 0; display: flex; flex-direction: column; gap: 12px;">
-                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding: 8px 0;"><span>🚀 1 Server (Basic)</span><span class="pricing-badge">70 KES</span></div>
-                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding: 8px 0;"><span>⚡ 2 Servers (Dual node)</span><span class="pricing-badge">100 KES</span></div>
-                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding: 8px 0;"><span>🔥 3 Servers (Cluster)</span><span class="pricing-badge">130 KES</span></div>
-                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding: 8px 0;"><span>💎 4 Servers (Pro)</span><span class="pricing-badge">160 KES</span></div>
-                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding: 8px 0;"><span>🏆 5 Servers (Ultimate)</span><span class="pricing-badge">190 KES</span></div>
-                    </div>
-                    <div style="background: rgba(0,0,0,0.3); border-radius: 1rem; padding: 1rem; margin-top: 0.5rem;">
-                        <i class="fas fa-bolt"></i> <strong>What you get:</strong> Full Node.js WhatsApp Bot panel, pre-configured MoneyHeist AI, auto-updater, and priority support. <strong>Unlimited WhatsApp numbers per panel.</strong>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding: 8px 0;"><span>🎯 MoneyHeist V1.0 (Normal WhatsApp Bot)</span><span class="pricing-badge">70 KES</span></div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding: 8px 0;"><span>⚙️ MoneyHeist V2.0 (Bot + GitHub & Vercel access)</span><span class="pricing-badge">150 KES</span></div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding: 8px 0;"><span>🔥 MoneyHeist V3.0 (Bot + GitHub + Vercel + Admin Panel)</span><span class="pricing-badge">300 KES</span></div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding: 8px 0;"><span>💎 MoneyHeist V4.0 (Unencrypted – Easy to clone)</span><span class="pricing-badge">500 KES</span></div>
                     </div>
                 </div>
 
-                <!-- Right: Buy form with phone number & STK push -->
+                <!-- Purchase Form -->
                 <div class="glass-panel" style="padding: 1.8rem;">
-                    <h3><i class="fas fa-mobile-alt"></i> Buy Panel via M-Pesa STK Push</h3>
-                    <p style="font-size: 0.85rem; margin: 0.5rem 0 1rem 0;">Enter your payment number & select servers. STK prompt will be sent instantly.</p>
+                    <h3><i class="fas fa-shopping-cart"></i> Buy via M-Pesa STK</h3>
                     <div>
-                        <label>📱 M-Pesa Phone Number (STK push)</label>
-                        <input type="tel" id="panelPhone" placeholder="2547XXXXXXXX" value="2547">
-                        <label style="margin-top: 12px;">📧 Email (for receipt)</label>
-                        <input type="email" id="panelEmail" placeholder="your@email.com">
-                        <label style="margin-top: 12px;">🎛️ Select Server Package</label>
-                        <select id="panelPlan">
-                            <option value="70">1 Server - 70 KES</option>
-                            <option value="100">2 Servers - 100 KES</option>
-                            <option value="130">3 Servers - 130 KES</option>
-                            <option value="160">4 Servers - 160 KES</option>
-                            <option value="190">5 Servers - 190 KES</option>
+                        <label>📱 M-Pesa Phone Number</label>
+                        <input type="tel" id="filePhone" placeholder="2547XXXXXXXX">
+                        <label style="margin-top: 12px;">📧 Email</label>
+                        <input type="email" id="fileEmail" placeholder="your@email.com">
+                        <label style="margin-top: 12px;">📦 Select Version</label>
+                        <select id="fileVersion">
+                            <option value="70">V1.0 - 70 KES (Normal Bot)</option>
+                            <option value="150">V2.0 - 150 KES (+GitHub/Vercel)</option>
+                            <option value="300">V3.0 - 300 KES (+Admin Panel)</option>
+                            <option value="500">V4.0 - 500 KES (Unencrypted)</option>
                         </select>
-                        <button id="payWithPaystackBtn" class="btn-primary" style="width: 100%; margin-top: 1.8rem; justify-content: center;"><i class="fas fa-credit-card"></i> Pay via M-Pesa STK Push</button>
-                        <div id="panelPaymentStatus" style="margin-top: 1rem; text-align: center;"></div>
+                        <button id="payFileBtn" class="btn-primary" style="width: 100%; margin-top: 1.8rem;"><i class="fas fa-credit-card"></i> Pay & Download</button>
+                        <div id="filePaymentStatus" style="margin-top: 1rem; text-align: center;"></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ========== SUPPORT SECTOR: Custom amount & STK Push ========== -->
-        <div id="support-stk" style="max-width: 1300px; margin: 1rem auto; padding: 0 1.5rem;">
-            <div style="text-align: center; margin-bottom: 1rem;">
-                <span style="background: #00e0ff20; padding: 0.3rem 1.2rem; border-radius: 60px;"><i class="fas fa-hand-holding-heart"></i> SUPPORT & CUSTOM STK PUSH</span>
-                <h2 style="font-size: 2rem; margin-top: 0.5rem;">Send any amount via STK (Support / Donation)</h2>
-            </div>
-            <div class="glass-panel" style="max-width: 600px; margin: 0 auto; padding: 2rem;">
-                <p style="margin-bottom: 1rem;"><i class="fas fa-info-circle"></i> Enter your phone number and amount to receive M-Pesa STK push. After payment, we'll confirm via WhatsApp.</p>
-                <label>📱 Phone Number (STK destination)</label>
-                <input type="tel" id="supportPhone" placeholder="2547XXXXXXXX" value="2547">
-                <label style="margin-top: 14px;">💰 Amount (KES) - min 10</label>
-                <input type="number" id="supportAmount" placeholder="e.g., 50, 100, 200" min="10" value="50">
-                <label style="margin-top: 14px;">📧 Email (optional)</label>
-                <input type="email" id="supportEmail" placeholder="your@email.com">
-                <button id="supportStkBtn" class="btn-primary" style="width: 100%; margin-top: 1.8rem; justify-content: center;"><i class="fas fa-exchange-alt"></i> Request STK Push (Pay via M-Pesa)</button>
-                <div id="supportPaymentStatus" style="margin-top: 1rem; text-align: center;"></div>
-            </div>
-        </div>
-
-        <!-- Additional existing sections: hosting guide, features etc (condensed but preserved) -->
-        <div id="features" style="max-width: 1300px; margin: 2rem auto; padding: 0 1.5rem;">
-            <div style="text-align: center;"><h2 style="font-size: 2rem;">🧠 Intelligence that respects your privacy</h2></div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem;">
-                <div class="glass-panel glass-card-hover" style="padding: 1.6rem;"><div class="feature-icon"><i class="fas fa-brain"></i></div><h3>GPT‑4 Turbo</h3><p>End-to-end encrypted conversations, image recognition, memory.</p></div>
-                <div class="glass-panel glass-card-hover" style="padding: 1.6rem;"><div class="feature-icon"><i class="fas fa-download"></i></div><h3>Media Master</h3><p>Download TikTok, Instagram, YouTube via WhatsApp.</p></div>
-                <div class="glass-panel glass-card-hover" style="padding: 1.6rem;"><div class="feature-icon"><i class="fas fa-users"></i></div><h3>Group Guardian</h3><p>Anti-spam, welcome messages, Kenyan group support.</p></div>
+        <!-- PTERODACTYL DEPLOYMENT GUIDE -->
+        <div id="pterodactyl-guide" style="max-width: 1300px; margin: 2rem auto; padding: 0 1.5rem;">
+            <div class="glass-panel" style="padding: 2rem;">
+                <h2><i class="fas fa-dragon"></i> How to Link MoneyHeist Bot on Pterodactyl Panel</h2>
+                <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+                    <p><strong>1. Get your bot source</strong> – Purchase above & download the zip file after payment.</p>
+                    <p><strong>2. Upload to Pterodactyl</strong> – In your panel, create a new “Egg” (Node.js) and upload the zip via File Manager or SFTP.</p>
+                    <p><strong>3. Install dependencies</strong> – Run <code>npm install</code> in the console.</p>
+                    <p><strong>4. Start the bot</strong> – Use <code>npm start</code>. The terminal will show a pairing code (12 digits) or QR.</p>
+                    <p><strong>5. Link WhatsApp</strong> – Open WhatsApp → Settings → Linked Devices → Link with phone number → enter the 12-digit code.</p>
+                    <p><strong>6. Keep running</strong> – The bot will stay online 24/7. Use <code>.menu</code> to see features.</p>
+                </div>
+                <div style="margin-top: 1.5rem; background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 1rem;">
+                    <i class="fas fa-video"></i> Need help? Watch our <a href="#" style="color:#ff4d6d;">video tutorial</a> or contact support.
+                </div>
             </div>
         </div>
 
-        <!-- WhatsApp Channel & Hosting support (short) -->
+        <!-- WHATSAPP CHANNEL & GROUP BUTTONS -->
         <div style="max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem;">
+            <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                <a href="https://whatsapp.com/channel/0029VaMzaziTech" target="_blank" class="btn-primary" style="background:#25D366;"><i class="fab fa-whatsapp"></i> Join WhatsApp Channel</a>
+                <a href="https://chat.whatsapp.com/YourGroupLink" target="_blank" class="btn-primary" style="background:#25D366;"><i class="fab fa-whatsapp"></i> Join WhatsApp Group</a>
+            </div>
+        </div>
+
+        <!-- SUPPORT STK (existing) & OTHER SECTIONS (condensed) -->
+        <div id="support-stk" style="max-width: 600px; margin: 2rem auto; padding: 0 1.5rem;">
+            <div class="glass-panel" style="padding: 2rem;">
+                <h2><i class="fas fa-hand-holding-heart"></i> Support / Custom STK</h2>
+                <input type="tel" id="supportPhone" placeholder="2547XXXXXXXX">
+                <input type="number" id="supportAmount" placeholder="Amount (KES)" min="10" style="margin-top: 1rem;">
+                <button id="supportStkBtn" class="btn-primary" style="width:100%; margin-top:1rem;">Request STK Push</button>
+                <div id="supportPaymentStatus" style="margin-top:1rem;"></div>
+            </div>
+        </div>
+
+        <!-- Existing features -->
+        <div style="max-width: 1300px; margin: 2rem auto; padding: 0 1.5rem;">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.5rem;">
-                <div class="glass-panel" style="padding: 1.8rem; text-align: center;"><i class="fab fa-whatsapp" style="font-size: 2.5rem; color:#25D366;"></i><h3>Official WhatsApp Channel</h3><a href="https://whatsapp.com/channel/0029VaMzaziTech" target="_blank" class="btn-primary" style="margin-top: 1rem;">Join Channel →</a></div>
-                <div class="glass-panel" style="padding: 1.8rem; text-align: center;"><i class="fas fa-headset" style="font-size: 2.5rem; color:#ff4d6d;"></i><h3>Panel Support & Activation</h3><p>After STK payment, click confirm button below to get unlimited panel.</p></div>
+                <div class="glass-panel glass-card-hover" style="padding: 1.6rem;"><div class="feature-icon"><i class="fas fa-brain"></i></div><h3>GPT‑4 Turbo</h3><p>End-to-end encrypted conversations.</p></div>
+                <div class="glass-panel glass-card-hover" style="padding: 1.6rem;"><div class="feature-icon"><i class="fas fa-download"></i></div><h3>Media Master</h3><p>Download TikTok, Instagram, YouTube.</p></div>
+                <div class="glass-panel glass-card-hover" style="padding: 1.6rem;"><div class="feature-icon"><i class="fas fa-users"></i></div><h3>Group Guardian</h3><p>Anti-spam & welcome messages.</p></div>
             </div>
         </div>
 
-        <div style="max-width: 1000px; margin: 2rem auto; padding: 0 1.5rem;">
-            <div class="glass-panel" style="padding: 2rem; text-align: center;">
-                <h2><i class="fas fa-gavel"></i> Kenyan Terms & Privacy</h2>
-                <p>MoneyHeist AI Bot is WhatsApp Business certified. Your M-Pesa payments are processed securely via Paystack. We never store card details.</p>
-            </div>
-        </div>
-
-        <footer style="margin-top: 3rem; padding: 2rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
-            <p>© 2025 MoneyHeist AI Bot — Mzazi Tech Inc. (Nairobi, Kenya) | STK Push powered by Paystack</p>
+        <footer style="margin-top: 3rem; padding: 2rem; text-align: center;">
+            <p>© 2025 MoneyHeist AI Bot — Mzazi Tech Inc. | STK by Paystack | DB: Neon.tech</p>
         </footer>
     </main>
 </div>
 
+<!-- Floating Support Buttons -->
+<div class="floating-support">
+    <a href="https://wa.me/254750611309" target="_blank" class="support-btn" style="background:#25D366;"><i class="fab fa-whatsapp"></i></a>
+    <a href="#" id="webChatBtn" class="support-btn chat"><i class="fas fa-comment-dots"></i></a>
+</div>
+
+<!-- Admin Login & Dashboard -->
+<div class="admin-login-btn" id="adminLoginBtn"><i class="fas fa-user-shield"></i> Admin</div>
+<div id="adminDashboard" class="admin-dashboard">
+    <div class="admin-panel">
+        <button class="close-admin" id="closeAdmin">&times;</button>
+        <h2>Admin Dashboard – Recent Transactions</h2>
+        <div style="overflow-x: auto;">
+            <table id="adminTable">
+                <thead><tr><th>Date</th><th>Phone</th><th>Email</th><th>Item</th><th>Amount (KES)</th><th>Status</th></tr></thead>
+                <tbody id="adminTableBody"><tr><td colspan="6">Loading...</td></tr></tbody>
+            </table>
+        </div>
+        <p style="margin-top:1rem;"><i class="fas fa-database"></i> Data stored in Neon.tech PostgreSQL</p>
+    </div>
+</div>
+
 <script>
-    // ---------- PASSWORD AUTH ----------
+    // ------------------- PASSWORD ------------------
     function verifyPassword() {
-        const passwordInput = document.getElementById('site-password').value;
-        const correctPassword = "MoneyHeistAi";
-        if(passwordInput === correctPassword) {
+        const pwd = document.getElementById('site-password').value;
+        if(pwd === "MoneyHeistAi") {
             document.getElementById('password-overlay').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
         } else {
-            document.getElementById('password-error').innerText = '❌ Incorrect password. Access denied.';
+            document.getElementById('password-error').innerText = '❌ Incorrect password.';
         }
     }
-    document.getElementById('site-password')?.addEventListener('keypress', function(e) { if(e.key === 'Enter') verifyPassword(); });
+    document.getElementById('site-password')?.addEventListener('keypress', e => e.key === 'Enter' && verifyPassword());
 
-    // ---------- PAYSTACK CONFIGURATION ----------
-    //  IMPORTANT: Replace with your live Paystack public key when going to production.
-    //  For testing, use test public key from Paystack dashboard. M-Pesa STK works on test keys with test numbers.
-    const PAYSTACK_PUBLIC_KEY = "pk_live_a99c78833d675611a4786b37f839a59be9d8bc3e"; // 🔁 REPLACE WITH YOUR PAYSTACK PUBLIC KEY
-    // For demo we will show alert if key is placeholder
-    const SUPPORT_WHATSAPP_NUMBER = "254750611309"; // Admin WhatsApp for confirmations
+    // ------------------- CONFIG ------------------
+    const PAYSTACK_PUBLIC_KEY = "pk_live_a99c78833d675611a4786b37f839a59be9d8bc3e"; // REPLACE WITH YOUR LIVE KEY
+    const API_BASE = "https://moneyheistai.mzazi.shop/api"; // Replace with your actual API endpoint (Vercel/Node)
 
-    // Helper: generate random transaction reference
-    function generateRef(prefix) {
-        return prefix + "_" + Date.now() + "_" + Math.random().toString(36).substring(2, 8);
+    // Helper: send transaction to backend (Neon.tech)
+    async function logTransaction(data) {
+        try {
+            await fetch(`${API_BASE}/transactions`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+        } catch(e) { console.warn("Backend not reachable, transaction not logged:", e); }
     }
 
-    // Generic Paystack payment handler with callback for both panel & support
-    function initiatePaystackPayment({ amount, email, phone, metadata, onSuccess, onClose }) {
-        if(!PAYSTACK_PUBLIC_KEY) {
-            alert("⚠️ Paystack public key not configured. Please update PAYSTACK_PUBLIC_KEY with your live/test key from Paystack dashboard.\n\nFor testing, use a valid test key and ensure M-Pesa test numbers are enabled.");
-            return false;
-        }
-        if(!amount || amount <= 0) { alert("Invalid amount"); return false; }
-        if(!email || !email.includes("@")) { 
-            // fallback: if no email, create dummy
-            email = phone + "@mpesa.user";
-        }
-        const koboAmount = Math.round(amount * 100);
+    // Generic Paystack payment
+    function initiatePaystack({ amount, email, phone, metadata, onSuccess }) {
+        if(!PAYSTACK_PUBLIC_KEY) { alert("Paystack key missing"); return false; }
         const handler = PaystackPop.setup({
             key: PAYSTACK_PUBLIC_KEY,
             email: email,
-            amount: koboAmount,
+            amount: amount * 100,
             currency: "KES",
-            ref: generateRef(metadata?.type || "txn"),
-            metadata: { custom_fields: [{ display_name: "Phone", variable_name: "phone", value: phone }, ...(metadata?.extra || []) ] },
-            callback: function(response) {
-                // payment completed successfully on Paystack (user saw STK and paid)
+            ref: "txn_" + Date.now() + "_" + Math.random().toString(36).substr(2,8),
+            metadata: { custom_fields: [{ display_name: "Phone", variable_name: "phone", value: phone }] },
+            callback: async (response) => {
                 if(response.status === 'success') {
-                    if(onSuccess) onSuccess(response, { amount, phone, email, metadata });
-                } else {
-                    alert("Payment was not completed. Please try again.");
-                    if(onClose) onClose();
-                }
+                    onSuccess(response, { amount, phone, email, metadata });
+                    // Log to backend
+                    await logTransaction({
+                        reference: response.reference,
+                        phone: phone,
+                        email: email,
+                        amount: amount,
+                        item: metadata.item,
+                        status: "success",
+                        timestamp: new Date().toISOString()
+                    });
+                } else alert("Payment failed");
             },
-            onClose: function() {
-                // user closed popup
-                if(onClose) onClose();
-            }
+            onClose: () => { /* optional */ }
         });
         handler.openIframe();
         return true;
     }
 
-    // ------------------- PANEL PURCHASE LOGIC -------------------
-    const payBtn = document.getElementById('payWithPaystackBtn');
-    const panelStatusDiv = document.getElementById('panelPaymentStatus');
-    
-    payBtn.addEventListener('click', function() {
-        let phone = document.getElementById('panelPhone').value.trim();
-        let email = document.getElementById('panelEmail').value.trim();
-        let planSelect = document.getElementById('panelPlan');
-        let amount = parseInt(planSelect.value);
-        let planText = planSelect.options[planSelect.selectedIndex].text;
-        
-        // Phone validation: must start with 254 and have 9-12 digits
-        if(!phone) { alert("Please enter your M-Pesa phone number (e.g., 2547XXXXXXXX)"); return; }
-        if(!phone.match(/^254[0-9]{9}$/)) {
-            alert("Phone number must be in format 2547XXXXXXXX (12 digits including 254). Example: 254712345678");
-            return;
-        }
-        if(!email) email = phone + "@moneype.com";
-        
-        panelStatusDiv.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Initializing STK push, please wait...';
-        
-        initiatePaystackPayment({
-            amount: amount,
-            email: email,
-            phone: phone,
-            metadata: { type: "panel_purchase", plan: planText, servers: planText },
+    // ------------------- FILE PURCHASE ------------------
+    const fileBtn = document.getElementById('payFileBtn');
+    fileBtn.addEventListener('click', () => {
+        let phone = document.getElementById('filePhone').value.trim();
+        let email = document.getElementById('fileEmail').value.trim();
+        let versionSelect = document.getElementById('fileVersion');
+        let amount = parseInt(versionSelect.value);
+        let versionText = versionSelect.options[versionSelect.selectedIndex].text;
+        if(!phone.match(/^254[0-9]{9}$/)) { alert("Phone must be 2547XXXXXXXX"); return; }
+        if(!email) email = phone + "@user.com";
+        document.getElementById('filePaymentStatus').innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Processing...';
+        initiatePaystack({
+            amount, email, phone,
+            metadata: { item: `MoneyHeist ${versionText}` },
             onSuccess: (response, details) => {
-                // Show success and add WhatsApp confirmation button (as per spec: after paying add a button)
-                panelStatusDiv.innerHTML = `
-                    <div style="background: #00aa5522; padding: 12px; border-radius: 1rem; margin-top: 12px;">
-                        <i class="fas fa-check-circle" style="color:#0f0;"></i> Payment of KES ${details.amount} successful!<br>
-                        Ref: ${response.reference}<br>
-                        <strong style="display:block; margin: 10px 0;">✅ UNLIMITED PANEL ACCESS READY</strong>
-                        <a href="https://wa.me/${SUPPORT_WHATSAPP_NUMBER}?text=Confirm%20Payment%20was%20successful%20for%20unlimited%20panel%20%7C%20Ref%3A%20${response.reference}%20%7C%20Amount%3A%20KES%20${details.amount}%20%7C%20Phone%3A%20${details.phone}" 
-                           target="_blank" class="success-wa-btn" style="display:inline-flex; margin-top: 8px;">
-                           <i class="fab fa-whatsapp"></i> ✅ If you have paid, click here to confirm & get unlimited panel
-                        </a>
-                        <p style="font-size:0.75rem; margin-top:8px;">After clicking, our team will activate your panel immediately.</p>
+                // Generate download link (you must host actual zip files)
+                let downloadUrl = "#"; // Replace with actual URL based on version
+                if(amount === 70) downloadUrl = "https://your-cdn.com/MoneyHeist_v1.zip";
+                else if(amount === 150) downloadUrl = "https://your-cdn.com/MoneyHeist_v2.zip";
+                else if(amount === 300) downloadUrl = "https://your-cdn.com/MoneyHeist_v3.zip";
+                else if(amount === 500) downloadUrl = "https://your-cdn.com/MoneyHeist_v4.zip";
+                document.getElementById('filePaymentStatus').innerHTML = `
+                    <div style="background: #0f0a2a; padding: 10px; border-radius: 1rem;">
+                        ✅ Payment of KES ${amount} successful!<br>
+                        <a href="${downloadUrl}" download class="btn-primary" style="margin-top: 8px; display: inline-block;"><i class="fas fa-download"></i> Download Bot Source</a><br>
+                        <small>Your download is ready. Keep your receipt: ${response.reference}</small>
                     </div>
                 `;
-            },
-            onClose: () => {
-                panelStatusDiv.innerHTML = '<span style="color: #ffaa66;">⚠️ STK payment window closed. If you completed payment, click the confirmation button above after paying.</span>';
             }
         });
     });
-    
-    // ------------------- SUPPORT SECTOR STK PUSH -------------------
-    const supportBtn = document.getElementById('supportStkBtn');
-    const supportStatusDiv = document.getElementById('supportPaymentStatus');
-    
-    supportBtn.addEventListener('click', function() {
+
+    // ------------------- SUPPORT STK (same as before but simplified) ------------------
+    document.getElementById('supportStkBtn')?.addEventListener('click', () => {
         let phone = document.getElementById('supportPhone').value.trim();
         let amount = parseInt(document.getElementById('supportAmount').value);
-        let email = document.getElementById('supportEmail').value.trim();
-        
-        if(!phone) { alert("Please enter phone number for STK push"); return; }
-        if(!phone.match(/^254[0-9]{9}$/)) {
-            alert("Phone number must start with 254 and 9 digits after (e.g., 254712345678)");
-            return;
-        }
-        if(isNaN(amount) || amount < 10) { alert("Amount must be at least 10 KES"); return; }
-        if(!email) email = phone + "@support.ke";
-        
-        supportStatusDiv.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending STK push to your phone...';
-        
-        initiatePaystackPayment({
-            amount: amount,
-            email: email,
-            phone: phone,
-            metadata: { type: "support_donation", purpose: "custom support" },
+        if(!phone.match(/^254[0-9]{9}$/)) { alert("Invalid phone"); return; }
+        if(isNaN(amount) || amount < 10) { alert("Amount min 10 KES"); return; }
+        initiatePaystack({
+            amount, email: phone+"@support.com", phone,
+            metadata: { item: "Support Donation" },
             onSuccess: (response, details) => {
-                supportStatusDiv.innerHTML = `
-                    <div style="background: #2a6b3f33; padding: 12px; border-radius: 1rem;">
-                        <i class="fas fa-heart" style="color:#ff4d6d;"></i> Support payment of KES ${details.amount} completed!<br>
-                        Ref: ${response.reference}<br>
-                        <a href="https://wa.me/${SUPPORT_WHATSAPP_NUMBER}?text=Support%20Payment%20Confirmed%20%7C%20Ref%3A%20${response.reference}%20%7C%20Amount%3A%20KES%20${details.amount}%20%7C%20Phone%3A%20${details.phone}" 
-                           target="_blank" class="success-wa-btn" style="margin-top: 10px; background:#25D366; color:#000;">
-                           <i class="fab fa-whatsapp"></i> ✅ Confirm payment & get support
-                        </a>
-                        <p style="font-size:12px; margin-top:6px;">Thank you for supporting Mzazi Tech! Click to notify admin.</p>
-                    </div>
-                `;
-            },
-            onClose: () => {
-                supportStatusDiv.innerHTML = '<span style="color: #ffaa66;">Transaction popup closed. If you completed payment, please click the confirmation button after paying.</span>';
+                document.getElementById('supportPaymentStatus').innerHTML = `<span style="color:#0f0;">✅ Thank you! Ref: ${response.reference}</span>`;
             }
         });
     });
-    
-    // smooth scroll anchors
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if(targetId === '#') return;
-            const target = document.querySelector(targetId);
-            if(target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-        });
+
+    // ------------------- ADMIN PANEL (login & fetch from Neon.tech) ------------------
+    const adminLoginBtn = document.getElementById('adminLoginBtn');
+    const adminDashboard = document.getElementById('adminDashboard');
+    const closeAdmin = document.getElementById('closeAdmin');
+    let isAdminLoggedIn = false;
+
+    adminLoginBtn.addEventListener('click', () => {
+        if(!isAdminLoggedIn) {
+            let username = prompt("Admin Username:");
+            let password = prompt("Admin Password:");
+            if(username === "Mzazi8946" && password === "8946Mzazi") {
+                isAdminLoggedIn = true;
+                loadAdminData();
+                adminDashboard.style.display = 'flex';
+            } else { alert("Invalid credentials"); }
+        } else {
+            adminDashboard.style.display = 'flex';
+            loadAdminData();
+        }
     });
-    
-    // optional copy pairing guide (keep original functionality)
-    const copyBtn = document.getElementById('copyPairingGuide');
-    if(copyBtn) {
-        copyBtn.addEventListener('click', () => {
-            navigator.clipboard.writeText("🔗 HOW TO LINK BOT: After hosting, bot shows QR or pairing code. Use WhatsApp settings → Linked devices → Link with phone number.");
-            alert("✅ Linking steps copied!");
-        });
+    closeAdmin.addEventListener('click', () => { adminDashboard.style.display = 'none'; });
+
+    async function loadAdminData() {
+        const tbody = document.getElementById('adminTableBody');
+        tbody.innerHTML = '<tr><td colspan="6">Loading...</td></tr>';
+        try {
+            // Fetch from your backend (which reads from Neon.tech)
+            const res = await fetch(`${API_BASE}/transactions`);
+            const data = await res.json();
+            if(data.length === 0) { tbody.innerHTML = '<tr><td colspan="6">No transactions yet</td></tr>'; return; }
+            tbody.innerHTML = data.map(t => `
+                <tr>
+                    <td>${new Date(t.timestamp).toLocaleString()}</td>
+                    <td>${t.phone}</td>
+                    <td>${t.email}</td>
+                    <td>${t.item || 'Bot purchase'}</td>
+                    <td>${t.amount}</td>
+                    <td>${t.status}</td>
+                </tr>
+            `).join('');
+        } catch(e) {
+            tbody.innerHTML = '<tr><td colspan="6">Failed to load data. Make sure backend is running with Neon.tech DB.</td></tr>';
+        }
     }
+
+    // Optional: web chat button
+    document.getElementById('webChatBtn')?.addEventListener('click', () => {
+        window.open('https://wa.me/254750611309', '_blank');
+    });
 </script>
 </body>
 </html>
