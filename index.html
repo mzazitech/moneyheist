@@ -222,7 +222,7 @@
     // ---------- PAYSTACK CONFIGURATION ----------
     //  IMPORTANT: Replace with your live Paystack public key when going to production.
     //  For testing, use test public key from Paystack dashboard. M-Pesa STK works on test keys with test numbers.
-    const PAYSTACK_PUBLIC_KEY = "pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"; // 🔁 REPLACE WITH YOUR PAYSTACK PUBLIC KEY
+    const PAYSTACK_PUBLIC_KEY = "pk_live_a99c78833d675611a4786b37f839a59be9d8bc3e"; // 🔁 REPLACE WITH YOUR PAYSTACK PUBLIC KEY
     // For demo we will show alert if key is placeholder
     const SUPPORT_WHATSAPP_NUMBER = "254750611309"; // Admin WhatsApp for confirmations
 
@@ -233,7 +233,7 @@
 
     // Generic Paystack payment handler with callback for both panel & support
     function initiatePaystackPayment({ amount, email, phone, metadata, onSuccess, onClose }) {
-        if(!PAYSTACK_PUBLIC_KEY || PAYSTACK_PUBLIC_KEY === "pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx") {
+        if(!PAYSTACK_PUBLIC_KEY || PAYSTACK_PUBLIC_KEY === "pk_live_a99c78833d675611a4786b37f839a59be9d8bc3e") {
             alert("⚠️ Paystack public key not configured. Please update PAYSTACK_PUBLIC_KEY with your live/test key from Paystack dashboard.\n\nFor testing, use a valid test key and ensure M-Pesa test numbers are enabled.");
             return false;
         }
